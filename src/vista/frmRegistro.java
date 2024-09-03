@@ -1,26 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-<<<<<<< HEAD
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package vista;
 import Modelo.ControladorRegistro;
 
 import modelo.UsuarioModelo;
 
-=======
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
-package vista;
-import Modelo.ControladorRegistro;
-
->>>>>>> fb26d5fcbfe66f0c259c00bf6a70234e64a3bfbd
-/**
- *
- * @author Carlos H
- */
-<<<<<<< HEAD
-<<<<<<< HEAD
 public class frmRegistro extends javax.swing.JFrame {
     public frmRegistro() {
         initComponents();
@@ -65,29 +48,10 @@ public class frmRegistro extends javax.swing.JFrame {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }
-=======
-public class frmRegistro extends javax.swing.JPanel {
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> fb26d5fcbfe66f0c259c00bf6a70234e64a3bfbd
-
-=======
-    private final ControladorRegistro controlador;
     
->>>>>>> CarlosH
-=======
 public class frmRegistro extends javax.swing.JPanel {
     private final ControladorRegistro controlador;
     
->>>>>>> CarlosH
-=======
-    private final ControladorRegistro controlador;
-    
-=======
->>>>>>> fb26d5fcbfe66f0c259c00bf6a70234e64a3bfbd
-
->>>>>>> e539dab114bf5090fe47d20e8d7039ac7b72de20
->>>>>>> CarlosH
     /**
      * Creates new form frmRegistro
      */
@@ -95,10 +59,6 @@ public class frmRegistro extends javax.swing.JPanel {
         initComponents();
         controlador = new ControladorRegistro();
     }
-<<<<<<< HEAD
-    
-=======
->>>>>>> fb26d5fcbfe66f0c259c00bf6a70234e64a3bfbd
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -208,17 +168,17 @@ public class frmRegistro extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnIrALoginActionPerformed
 
-    private void txtCorreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCorreoActionPerformed
+    private void txtCorreoActionPerformed(java.awt.event.ActionEvent evt) {                                          
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtCorreoActionPerformed
+    }                                         
 
-    private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
+    private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {                                          
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtNombreActionPerformed
+    }                                         
 
-    private void txtContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtContraseñaActionPerformed
+    private void txtContraseñaActionPerformed(java.awt.event.ActionEvent evt) {                                              
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtContraseñaActionPerformed
+    }                                             
 
     private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
         // TODO add your handling code here:
@@ -259,7 +219,7 @@ public class frmRegistro extends javax.swing.JPanel {
         });
     }
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
+    // Variables declaration - do not modify                     
     public javax.swing.JButton btnIrALogin;
     public javax.swing.JButton btnRegistrarme;
     private javax.swing.ButtonGroup buttonGroup1;
@@ -274,7 +234,7 @@ public class frmRegistro extends javax.swing.JPanel {
     public javax.swing.JTextField txtCorreo;
     private javax.swing.JLabel txtIrRegistro;
     public javax.swing.JTextField txtNombre;
-    // End of variables declaration//GEN-END:variables
+    // End of variables declaration                   
 
     public Object getBtnRegistrarme() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
@@ -283,7 +243,7 @@ public class frmRegistro extends javax.swing.JPanel {
     public Object getBtnIrALogin() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-=======
+
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
@@ -301,24 +261,6 @@ public class frmRegistro extends javax.swing.JPanel {
         txtContraseña = new javax.swing.JTextField();
         TutoTechLabel = new javax.swing.JLabel();
 
-=======
-        jPanel2 = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
-        RecuLabel = new javax.swing.JLabel();
-        jSeparator1 = new javax.swing.JSeparator();
-        jLabel1 = new javax.swing.JLabel();
-        emailLogoLabel = new javax.swing.JLabel();
-        btnRegistro = new javax.swing.JButton();
-        txtCorreo = new javax.swing.JTextField();
-        jSeparator2 = new javax.swing.JSeparator();
-        txtNombre = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        txtEdad = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        txtContraseña = new javax.swing.JTextField();
-        TutoTechLabel = new javax.swing.JLabel();
-
->>>>>>> CarlosH
         jPanel1.setBackground(new java.awt.Color(28, 82, 100));
 
         jPanel2.setBackground(new java.awt.Color(238, 245, 255));
@@ -527,7 +469,7 @@ public class frmRegistro extends javax.swing.JPanel {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
-    }// </editor-fold>//GEN-END:initComponents
+    }// </editor-fold>                        
 
     private void btnRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistroActionPerformed
         // TODO add your handling code here:
@@ -584,5 +526,4 @@ public class frmRegistro extends javax.swing.JPanel {
     private javax.swing.JTextField txtEdad;
     private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
->>>>>>> fb26d5fcbfe66f0c259c00bf6a70234e64a3bfbd
 }
