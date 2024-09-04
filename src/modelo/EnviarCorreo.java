@@ -26,6 +26,7 @@ public class EnviarCorreo {
         Properties properties = new Properties();
         properties.put("mail.smtp.auth", "true");
         properties.put("mail.smtp.starttls.enable", "true");
+        properties.put("mail.smtp.ssl.trust", SMTP);
         properties.put("mail.smtp.host", SMTP); 
         properties.put("mail.smtp.port", PORT);
 
