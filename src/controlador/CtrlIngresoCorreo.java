@@ -71,21 +71,15 @@ public class CtrlIngresoCorreo implements ActionListener {
             return;
         }
 
-        int caracteres = (int) (Math.random() * 30);
-        String clave = "";
-
-        for (int i = 0; i < caracteres; i++) {
-            int ascii = (int) Math.floor(Math.random() * (200 - 97) + 97);
-            clave += (char) ascii;
-        }
+        int caracteres = (int) (Math.random() * 99999);
 
         String titulo = "Recuperacion de contraseña";
-        String contenido = "Esta es tu nueva clave " + clave;
+        String contenido = "Esta es tu nueva clave " + caracteres;
 
         boolean enviado = EnviarCorreo.enviarCorreo(correo, titulo, contenido);
 
         if (enviado)
-            ld.actualizarClave(correo.toUpperCase(), clave);
+            ld.actualizarClave(correo.toUpperCase(), caracteres+"");
 
         JOptionPane.showMessageDialog(null,
                 enviado ? "Se ha enviado el correo" : "No se pudo enviar el correo");
