@@ -104,6 +104,21 @@ public class Tutoria {
             PreparedStatement deleteEstudiante = conexion.prepareStatement("delete from tbTutoria where idTutoria = ?");
             deleteEstudiante.setString(1, miId);
             deleteEstudiante.executeUpdate();
+            
+            // Verificar la tabla de auditoría
+            PreparedStatement verificarAuditoria = conexion.prepareStatement(
+                "SELECT * FROM auditoria WHERE accion = 'DELETE' AND tabla_nombre = 'tbTutoria' ORDER BY fecha DESC FETCH FIRST 1 ROWS ONLY"
+            );
+            
+            ResultSet rs = verificarAuditoria.executeQuery();
+        
+            // Si hay un resultado, imprimimos la verificación de auditoría
+            if (rs.next()) {
+                String datosAnteriores = rs.getString("datos_anteriores");
+                System.out.println("Registro de auditoría (DELETE): " + datosAnteriores);
+            } else {
+                System.out.println("No se encontró registro de auditoría para el DELETE.");
+            }
         } catch (Exception e) {
             System.out.println("este es el error metodo de eliminar" + e);
         }
@@ -127,30 +142,62 @@ public class Tutoria {
         }
     }
     //ACTUALIZAR/////////////////////////////////////////////////////
-    public void Actualizar(JTable tabla) {
-        //Creamos una variable igual a ejecutar el método de la clase de conexión
-        Connection conexion = ClaseConexion.getConexion();
- 
-        //obtenemos que fila seleccionó el usuario
-        int filaSeleccionada = tabla.getSelectedRow();
-        if (filaSeleccionada != -1) {
-            //Obtenemos el id de la fila seleccionada
-            String miUUId = tabla.getValueAt(filaSeleccionada, 0).toString();
-            try { 
-                //Ejecutamos la Query
-                PreparedStatement updateUser = conexion.prepareStatement("update tbTutoria set nombreTutoria = ?, descripcionTutoria = ?, where idTutoria = ?");
- 
-                updateUser.setString(1, getNombreTutoria());
-                updateUser.setString(2, getDescripcionTutoria());
-                updateUser.setString(4, miUUId);
-                updateUser.executeUpdate();
-            } catch (Exception e) {
-                System.out.println("este es el error en el metodo de actualizar" + e);
+public void Actualizar(JTable tabla) {
+    //Creamos una variable igual a ejecutar el método de la clase de conexión
+    Connection conexion = ClaseConexion.getConexion();
+
+    //obtenemos que fila seleccionó el usuario
+    int filaSeleccionada = tabla.getSelectedRow();
+    if (filaSeleccionada != -1) {
+        //Obtenemos el id de la fila seleccionada
+        String miUUId = tabla.getValueAt(filaSeleccionada, 0).toString();
+        try { 
+            // Obtenemos los datos actuales antes de la actualización (para la auditoría)
+            PreparedStatement obtenerDatos = conexion.prepareStatement("SELECT nombreTutoria, descripcionTutoria FROM tbTutoria WHERE idTutoria = ?");
+            obtenerDatos.setString(1, miUUId);
+            ResultSet rs = obtenerDatos.executeQuery();
+
+            String nombreTutoriaAnterior = "";
+            String descripcionTutoriaAnterior = "";
+
+            if (rs.next()) {
+                nombreTutoriaAnterior = rs.getString("nombreTutoria");
+                descripcionTutoriaAnterior = rs.getString("descripcionTutoria");
             }
-        } else {
-            System.out.println("no");
+
+            //Ejecutamos la Query de actualización
+            PreparedStatement updateUser = conexion.prepareStatement("UPDATE tbTutoria SET nombreTutoria = ?, descripcionTutoria = ? WHERE idTutoria = ?");
+
+            updateUser.setString(1, getNombreTutoria());
+            updateUser.setString(2, getDescripcionTutoria());
+            updateUser.setString(3, miUUId);
+            updateUser.executeUpdate();
+
+            // Insertar en la tabla de auditoría el cambio realizado
+            PreparedStatement auditoriaUpdate = conexion.prepareStatement(
+                "INSERT INTO auditoria (tabla_nombre, accion, datos_anteriores, datos_nuevos) VALUES (?, ?, ?, ?)"
+            );
+
+            auditoriaUpdate.setString(1, "tbTutoria");
+            auditoriaUpdate.setString(2, "UPDATE");
+
+            // Concatenamos los datos anteriores y nuevos para almacenarlos en la auditoría
+            String datosAnteriores = "nombreTutoria: " + nombreTutoriaAnterior + ", descripcionTutoria: " + descripcionTutoriaAnterior;
+            String datosNuevos = "nombreTutoria: " + getNombreTutoria() + ", descripcionTutoria: " + getDescripcionTutoria();
+
+            auditoriaUpdate.setString(3, datosAnteriores);
+            auditoriaUpdate.setString(4, datosNuevos);
+
+            // Ejecutamos la auditoría
+            auditoriaUpdate.executeUpdate();
+
+        } catch (Exception e) {
+            System.out.println("Este es el error en el método de actualizar: " + e);
         }
+    } else {
+        System.out.println("No hay ninguna fila seleccionada para actualizar.");
     }
+}
     //LIMPIAR//////////////////////////////////////////////////////////
     public void LimpiarDatos(jpAddTutoria vista) {
         // Establece los valores en los campos de texto
