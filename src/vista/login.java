@@ -47,6 +47,7 @@ public class login extends javax.swing.JFrame {
         jTxtPass = new javax.swing.JPasswordField();
         jTxtMail = new javax.swing.JTextField();
         lblRecupera = new javax.swing.JLabel();
+        lblCrearCta = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -73,6 +74,9 @@ public class login extends javax.swing.JFrame {
         lblRecupera.setForeground(new java.awt.Color(255, 255, 255));
         lblRecupera.setText("¿No recuerdas tu clave?");
 
+        lblCrearCta.setForeground(new java.awt.Color(255, 255, 255));
+        lblCrearCta.setText("¿Desea crear cuenta?");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -80,24 +84,24 @@ public class login extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(197, 197, 197)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jTxtPass, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTxtMail, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING))
-                                .addGap(0, 44, Short.MAX_VALUE))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(318, 318, 318)
-                        .addComponent(jBtnInicia)))
+                        .addComponent(jBtnInicia))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(197, 197, 197)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTxtPass)
+                            .addComponent(jTxtMail)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel3))
+                                .addGap(0, 44, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(lblRecupera)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lblCrearCta)))))
                 .addGap(226, 226, 226))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(292, 292, 292)
-                .addComponent(lblRecupera)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -115,7 +119,9 @@ public class login extends javax.swing.JFrame {
                 .addGap(27, 27, 27)
                 .addComponent(jBtnInicia)
                 .addGap(18, 18, 18)
-                .addComponent(lblRecupera)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblRecupera)
+                    .addComponent(lblCrearCta))
                 .addContainerGap(33, Short.MAX_VALUE))
         );
 
@@ -180,6 +186,7 @@ public class login extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTxtMail;
     private javax.swing.JPasswordField jTxtPass;
+    private javax.swing.JLabel lblCrearCta;
     private javax.swing.JLabel lblRecupera;
     // End of variables declaration//GEN-END:variables
 
@@ -213,6 +220,14 @@ public class login extends javax.swing.JFrame {
 
     public void setLblRecupera(JLabel lblRecupera) {
         this.lblRecupera = lblRecupera;
+    }
+
+    public JLabel getLblCrearCta() {
+        return lblCrearCta;
+    }
+
+    public void setLblCrearCta(JLabel lblCrearCta) {
+        this.lblCrearCta = lblCrearCta;
     }
     
     

@@ -15,53 +15,79 @@ import java.sql.Statement;
  * @author lenovo
  */
 public class LoginDao {
-    
-    
-    public boolean validarCredenciales(String usuario, String clave){
-        try{
-            Connection con = ClaseConexion.getConexion();
-            
+
+    public boolean validarCredenciales(String usuario, String clave) {
+        Connection con = ClaseConexion.getConexion();
+
+        try {
+
             Statement st = con.createStatement();
-            String sql = "select * from tbUsuario where upper(correoUsuario) = ".concat(usuario)
-                    .concat(" and contrasenaUsuario = ").concat(clave);
+            String sql = "select * from tbUsuario where upper(correoUsuario) = '".concat(usuario)
+                    .concat("' and contrasenaUsuario = '").concat(clave).concat("'");
             ResultSet rs = st.executeQuery(sql);
-            
+
             return rs.next();
-            
-        }catch(Exception e){
+
+        } catch (Exception e) {
             e.printStackTrace();
             return false;
+        } finally {
+            if (con != null) {
+                try {
+                    con.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
         }
     }
-    
-    public boolean validarUsuario(String usuario){
-        try{
-            Connection con = ClaseConexion.getConexion();
-            
+
+    public boolean validarUsuario(String usuario) {
+        Connection con = ClaseConexion.getConexion();
+
+        try {
+
             Statement st = con.createStatement();
-            String sql = "select * from tbUsuario where upper(correoUsuario) = ".concat(usuario);
+            String sql = "select * from tbUsuario where upper(correoUsuario) = '".concat(usuario).concat("'");
             ResultSet rs = st.executeQuery(sql);
-            
+
             return rs.next();
-            
-        }catch(Exception e){
+
+        } catch (Exception e) {
             e.printStackTrace();
             return false;
+        } finally {
+            if (con != null) {
+                try {
+                    con.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
         }
     }
-    
-    public int actualizarClave(String correo, String clave){
-        try{
-            Connection con = ClaseConexion.getConexion();
-            
+
+    public int actualizarClave(String correo, String clave) {
+        Connection con = ClaseConexion.getConexion();
+
+        try {
+
             Statement st = con.createStatement();
-            String sql = "update tbUsuario set contrasenaUsuario = ".concat(clave)
-                    .concat(" where upper(correoUsuario)").concat(correo);
+            String sql = "update tbUsuario set contrasenaUsuario = '".concat(clave)
+                    .concat("' where upper(correoUsuario) = '").concat(correo).concat("'");
             return st.executeUpdate(sql);
-            
-        }catch(Exception e){
+
+        } catch (Exception e) { 
             e.printStackTrace();
             return 0;
+        } finally {
+            if (con != null) {
+                try {
+                    con.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
         }
     }
 }

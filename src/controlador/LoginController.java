@@ -12,6 +12,7 @@ import java.awt.event.MouseEvent;
 import javax.swing.JOptionPane;
 import modelo.LoginDao;
 import vista.frmMenuPrincipal;
+import vista.frmRegistro;
 import vista.login;
 import vista.recuperacionClave;
 
@@ -35,7 +36,6 @@ public class LoginController implements ActionListener {
     }
 
     public LoginController(LoginDao Modelo, login Vista) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
     private void addListener(){
@@ -49,6 +49,15 @@ public class LoginController implements ActionListener {
                 recuperacionClave recupera = new recuperacionClave();
                 vista.dispose();
                 new CtrlIngresoCorreo(recupera);
+            }
+        });
+        
+        vista.getLblCrearCta().addMouseListener(new MouseAdapter() {
+            
+            public void mouseClicked(MouseEvent e){
+                frmRegistro reg = new frmRegistro();
+                vista.dispose();
+                new CtrlRegistro(reg);
             }
         });
     }
