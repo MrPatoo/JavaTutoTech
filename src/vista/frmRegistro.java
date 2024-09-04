@@ -5,7 +5,7 @@
 package vista;
 
 import modelo.ControladorRegistro;
-
+import controlador.CtrlRegistro;
 /**
  *
  * @author Carlos H
@@ -18,7 +18,15 @@ public class frmRegistro extends javax.swing.JFrame {
     public frmRegistro() {
         initComponents();
     }
+    
+    public static void initfrmRegistro(){
+    ControladorRegistro Modelo = new ControladorRegistro();
+    frmRegistro Vista = new frmRegistro();
+    controlador.CtrlRegistro Controlador = new controlador.CtrlRegistro(Modelo, Vista);
+    
+    
 
+ }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -36,11 +44,11 @@ public class frmRegistro extends javax.swing.JFrame {
         btnRegistrar = new javax.swing.JButton();
         txtContra = new javax.swing.JPasswordField();
         txtCorreo = new javax.swing.JTextField();
-        txtEdad = new javax.swing.JPasswordField();
-        txtNombre = new javax.swing.JPasswordField();
         jLabel22 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
-        jLabel24 = new javax.swing.JLabel();
+        lbIrasesion = new javax.swing.JLabel();
+        txtNombre = new javax.swing.JTextField();
+        txtedad = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -69,12 +77,6 @@ public class frmRegistro extends javax.swing.JFrame {
             }
         });
 
-        txtEdad.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtEdadActionPerformed(evt);
-            }
-        });
-
         jLabel22.setBackground(new java.awt.Color(255, 255, 255));
         jLabel22.setForeground(new java.awt.Color(255, 255, 255));
         jLabel22.setText("Edad:");
@@ -83,8 +85,20 @@ public class frmRegistro extends javax.swing.JFrame {
         jLabel23.setForeground(new java.awt.Color(255, 255, 255));
         jLabel23.setText("Nombre de usuario:");
 
-        jLabel24.setForeground(new java.awt.Color(102, 255, 102));
-        jLabel24.setText("¿YA TIENES CUENTA? inicia sesion aqui");
+        lbIrasesion.setForeground(new java.awt.Color(102, 255, 102));
+        lbIrasesion.setText("¿YA TIENES CUENTA? inicia sesion aqui");
+
+        txtNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNombreActionPerformed(evt);
+            }
+        });
+
+        txtedad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtedadActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -93,30 +107,24 @@ public class frmRegistro extends javax.swing.JFrame {
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addGap(206, 206, 206)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtedad, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel23)
+                    .addComponent(jLabel21)
                     .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addComponent(txtEdad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addComponent(txtNombre)
-                        .addGap(339, 339, 339))
-                    .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel23)
-                            .addComponent(jLabel21)
+                        .addComponent(btnRegistrar)
+                        .addGap(18, 18, 18)
+                        .addComponent(lbIrasesion))
+                    .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(txtContra, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 473, Short.MAX_VALUE)
+                            .addComponent(txtCorreo, javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel8Layout.createSequentialGroup()
-                                .addComponent(btnRegistrar)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel24))
-                            .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(txtContra, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtCorreo, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel8Layout.createSequentialGroup()
-                                        .addComponent(jLabel20)
-                                        .addGap(226, 226, 226))
-                                    .addComponent(jLabel22, javax.swing.GroupLayout.Alignment.LEADING))))
-                        .addGap(252, 339, Short.MAX_VALUE))))
+                                .addComponent(jLabel20)
+                                .addGap(226, 226, 226))
+                            .addComponent(jLabel22, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtNombre, javax.swing.GroupLayout.Alignment.LEADING))))
+                .addContainerGap(252, Short.MAX_VALUE))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -134,7 +142,7 @@ public class frmRegistro extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel22)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtEdad, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtedad, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel21)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -142,7 +150,7 @@ public class frmRegistro extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnRegistrar)
-                    .addComponent(jLabel24))
+                    .addComponent(lbIrasesion))
                 .addGap(45, 45, 45))
         );
 
@@ -184,8 +192,19 @@ public class frmRegistro extends javax.swing.JFrame {
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
         // TODO add your handling code here:
+        
+      login newframeLogin = new login();
+login.initlogin();
+this.dispose();
+
+frmRegistro newframeRegistro = new frmRegistro();
+frmRegistro.initfrmRegistro();
+this.dispose();
+        
+        
+        
         String nombre = txtNombre.getText();
-    int edad = Integer.parseInt(txtEdad.getText());
+    int edad = Integer.parseInt(txtedad.getText());
     String correo = txtCorreo.getText();
     String contrasena = new String(txtContra.getPassword());
 
@@ -197,9 +216,13 @@ public class frmRegistro extends javax.swing.JFrame {
     
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
-    private void txtEdadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEdadActionPerformed
+    private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtEdadActionPerformed
+    }//GEN-LAST:event_txtNombreActionPerformed
+
+    private void txtedadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtedadActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtedadActionPerformed
 
     /**
      * @param args the command line arguments
@@ -227,6 +250,7 @@ public class frmRegistro extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(frmRegistro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        initfrmRegistro();
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -237,66 +261,18 @@ public class frmRegistro extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnRegistrar;
-    private javax.swing.JButton jBtnInicia;
-    private javax.swing.JButton jBtnInicia1;
-    private javax.swing.JButton jBtnInicia2;
-    private javax.swing.JButton jBtnInicia3;
-    private javax.swing.JButton jBtnInicia4;
-    private javax.swing.JButton jBtnInicia5;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
+    public javax.swing.JButton btnRegistrar;
     private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel24;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
-    private javax.swing.JTextField jTxtMail;
-    private javax.swing.JTextField jTxtMail1;
-    private javax.swing.JTextField jTxtMail2;
-    private javax.swing.JTextField jTxtMail3;
-    private javax.swing.JTextField jTxtMail4;
-    private javax.swing.JTextField jTxtMail5;
-    private javax.swing.JPasswordField jTxtPass;
-    private javax.swing.JPasswordField jTxtPass1;
-    private javax.swing.JPasswordField jTxtPass2;
-    private javax.swing.JPasswordField jTxtPass3;
-    private javax.swing.JPasswordField jTxtPass4;
-    private javax.swing.JPasswordField jTxtPass5;
-    private javax.swing.JLabel lblRecupera;
-    private javax.swing.JLabel lblRecupera1;
-    private javax.swing.JLabel lblRecupera2;
-    private javax.swing.JLabel lblRecupera3;
-    private javax.swing.JLabel lblRecupera4;
-    private javax.swing.JLabel lblRecupera5;
+    public javax.swing.JLabel lbIrasesion;
     private javax.swing.JPasswordField txtContra;
     private javax.swing.JTextField txtCorreo;
-    private javax.swing.JPasswordField txtEdad;
-    private javax.swing.JPasswordField txtNombre;
+    private javax.swing.JTextField txtNombre;
+    private javax.swing.JTextField txtedad;
     // End of variables declaration//GEN-END:variables
 }

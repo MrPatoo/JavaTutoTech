@@ -33,6 +33,10 @@ public class LoginController implements ActionListener {
         vista.setVisible(true);
         addListener();
     }
+
+    public LoginController(LoginDao Modelo, login Vista) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
     
     private void addListener(){
         vista.getjTxtMail().addActionListener(this);
