@@ -1,4 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+<<<<<<< HEAD
+=======
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+<<<<<<< HEAD
+        <group>
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+            <file>file:/C:/Users/Carlos%20H/OneDrive%20-%20INSTITUTO%20TÉCNICO%20RICALDONE/Escritorio/JavaTutoTech/src/modelo/ClaseConexion.java</file>
+            <file>file:/C:/Users/Carlos%20H/OneDrive%20-%20INSTITUTO%20TÉCNICO%20RICALDONE/Escritorio/JavaTutoTech/src/vista/jpAddTutoria.java</file>
+            <file>file:/C:/Users/Carlos%20H/OneDrive%20-%20INSTITUTO%20TÉCNICO%20RICALDONE/Escritorio/JavaTutoTech/src/vista/frmRegistro.java</file>
+=======
+=======
+>>>>>>> CarlosH
+=======
+>>>>>>> CarlosH
+            <file>file:/C:/Users/Carlos%20H/OneDrive%20-%20INSTITUTO%20TÉCNICO%20RICALDONE/Escritorio/JavaTutoTech/src/modelo/Usuario.java</file>
+            <file>file:/C:/Users/Carlos%20H/OneDrive%20-%20INSTITUTO%20TÉCNICO%20RICALDONE/Escritorio/JavaTutoTech/src/modelo/ClaseConexion.java</file>
+            <file>file:/C:/Users/Carlos%20H/OneDrive%20-%20INSTITUTO%20TÉCNICO%20RICALDONE/Escritorio/JavaTutoTech/src/vista/jpAddTutoria.java</file>
+            <file>file:/C:/Users/Carlos%20H/OneDrive%20-%20INSTITUTO%20TÉCNICO%20RICALDONE/Escritorio/JavaTutoTech/src/modelo/ControladorRegistro.java</file>
+            <file>file:/C:/Users/Carlos%20H/OneDrive%20-%20INSTITUTO%20TÉCNICO%20RICALDONE/Escritorio/JavaTutoTech/src/vista/frmRegistro.java</file>
+            <file>file:/C:/Users/Carlos%20H/OneDrive%20-%20INSTITUTO%20TÉCNICO%20RICALDONE/Escritorio/JavaTutoTech/src/modelo/UsuarioDAO.java</file>
+<<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> CarlosH
+=======
+>>>>>>> CarlosH
+=======
+=======
+            <file>file:/C:/Users/Carlos%20H/OneDrive%20-%20INSTITUTO%20TÉCNICO%20RICALDONE/Escritorio/JavaTutoTech/src/modelo/ClaseConexion.java</file>
+            <file>file:/C:/Users/Carlos%20H/OneDrive%20-%20INSTITUTO%20TÉCNICO%20RICALDONE/Escritorio/JavaTutoTech/src/vista/jpAddTutoria.java</file>
+            <file>file:/C:/Users/Carlos%20H/OneDrive%20-%20INSTITUTO%20TÉCNICO%20RICALDONE/Escritorio/JavaTutoTech/src/vista/frmRegistro.java</file>
+>>>>>>> e539dab114bf5090fe47d20e8d7039ac7b72de20
+>>>>>>> CarlosH
+        </group>
+=======
+        <group/>
+>>>>>>> Pablo
+    </open-files>
+>>>>>>> master
 </project-private>
