@@ -74,7 +74,7 @@ public class CtrlIngresoCorreo implements ActionListener {
         int caracteres = (int) (Math.random() * 99999);
 
         String titulo = "Recuperacion de contraseña";
-        String contenido = "Esta es tu nueva clave " + caracteres;
+        String contenido = "Esta es tu nueva contraseña:  " + caracteres;
 
         boolean enviado = EnviarCorreo.enviarCorreo(correo, titulo, contenido);
 
