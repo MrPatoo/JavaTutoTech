@@ -61,14 +61,8 @@ public class jpAddTutoria extends javax.swing.JPanel {
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-<<<<<<< HEAD
         txtNombre.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 100, 590, 40));
-=======
-        txtNombre.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
-        add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 100, 550, 40));
-
->>>>>>> 446253853fdd05642a5ed56a41c614027927282d
 
         btnEliminar.setBackground(new java.awt.Color(19, 82, 92));
         btnEliminar.setFont(new java.awt.Font("Dubai", 0, 18)); // NOI18N

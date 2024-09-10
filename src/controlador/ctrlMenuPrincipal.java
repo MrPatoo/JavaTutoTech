@@ -65,7 +65,17 @@ public class ctrlMenuPrincipal implements MouseListener{
             modelo.Mostrar(panel.jtbTutoria);
 
             
+            if (e.getSource() == panel.btnActualizar ) {
+            modelo.setNombreTutoria(panel.txtNombre.getText());
+            modelo.setDescripcionTutoria(panel.txtDescripcion.getText());
             
+            modelo.Actualizar(panel.jtbTutoria);
+            modelo.Mostrar(panel.jtbTutoria);
+        }
+        
+        if (e.getSource() == panel.btnLimpiar ) {
+            modelo.LimpiarDatos(panel);
+        }
             
                    
             //validaciones---------------------------------------------------------------------------------------
@@ -73,6 +83,8 @@ public class ctrlMenuPrincipal implements MouseListener{
                 //esto es un alert
                 JOptionPane.showMessageDialog(vista, "Llene todos los campos");
             }
+            
+            
         }
     }
 
