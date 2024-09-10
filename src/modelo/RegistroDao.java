@@ -33,7 +33,7 @@ public class RegistroDao {
         return true;
     }
 
-    /*public String encriptarSHA256(String contrasena) {
+    public String encriptarSHA256(String contrasena) {
         try {
             MessageDigest digest = MessageDigest.getInstance("SHA-256");
             byte[] encodedhash = digest.digest(contrasena.getBytes(StandardCharsets.UTF_8));
@@ -48,18 +48,18 @@ public class RegistroDao {
             JOptionPane.showMessageDialog(null, "Error al encriptar la contraseña: " + e.getMessage());
             return null;
         }
-    }*/
+    }
 
     public void registrarUsuario(String nombre, int edad, String correo, String contrasena) {
-        // Validar campos antes de registrar
+        //Validar campos antes de registrar
         if (!validarCampos(nombre, edad, correo, contrasena)) {
             return;
         }
 
-        /*String contrasenaEncriptada = encriptarSHA256(contrasena);
+        String contrasenaEncriptada = encriptarSHA256(contrasena);
         if (contrasenaEncriptada == null) {
             return; // Salir si hay un error en la encriptación
-        }*/
+        }
 
         Connection conn = null;
         PreparedStatement ps = null;

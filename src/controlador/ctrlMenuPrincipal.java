@@ -30,6 +30,8 @@ public class ctrlMenuPrincipal implements MouseListener{
         panel.btnAgregar.addMouseListener(this);
         modelo.Mostrar(panel.jtbTutoria);
         panel.btnEliminar.addMouseListener(this);
+        panel.btnActualizar.addMouseListener(this);
+        panel.btnLimpiar.addMouseListener(this);
     }
     
     public void abrirApp(){
