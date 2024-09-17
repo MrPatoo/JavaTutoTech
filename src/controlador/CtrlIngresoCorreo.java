@@ -4,10 +4,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.Random;
 import javax.swing.JOptionPane;
 import modelo.EnviarCorreo;
-import modelo.LoginDao;
+import modelo.Usuario;
 import vista.login;
 import vista.recuperacionClave;
 
@@ -63,7 +62,7 @@ public class CtrlIngresoCorreo implements ActionListener {
             return;
         }
 
-        LoginDao ld = new LoginDao();
+        Usuario ld = new Usuario();
 
         //if(!ld.validarUsuario(correo.toUpperCase())){
         if (1 != 1) {
@@ -88,7 +87,7 @@ public class CtrlIngresoCorreo implements ActionListener {
             ld.actualizarClave(correo.toUpperCase(), clave);
 
         JOptionPane.showMessageDialog(null,
-                enviado ? "Se ha enviado el correo" : "No se pudo enviar el correo");
+                enviado ? "Se ha enviado un codigo de recuperación a su correo" : "No se pudo enviar el correo");
 
         if (enviado) {
             login login = new login();

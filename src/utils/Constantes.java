@@ -10,10 +10,14 @@ package utils;
  * @author lenovo
  */
 public class Constantes {
-            
+
     public static String SMTP = "smtp.gmail.com";
     public static String PORT = "587";
     public static String EMAIL = "tutotech.ptc@gmail.com";
     public static String PASS = "yjqu ryki vljy ooal";
-    
+
+    public static final String URL = "jdbc:oracle:thin:@localhost:1521:xe";
+    public static final String USUARIO = "system";
+    public static final String CONTRASENA = "desarrollo";
+
 }

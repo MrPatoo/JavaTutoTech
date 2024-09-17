@@ -1,12 +1,13 @@
-package Modelo;
+package modelo;
 
 import java.util.UUID;
 
 public class ControladorRegistro {
-    private UsuarioDAO usuarioDAO;
+
+    private Usuario usuarioDAO;
 
     public ControladorRegistro() {
-        usuarioDAO = new UsuarioDAO();
+        usuarioDAO = new Usuario();
     }
 
     // Método para registrar un nuevo usuario

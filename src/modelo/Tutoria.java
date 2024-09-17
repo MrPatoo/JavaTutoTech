@@ -1,7 +1,7 @@
 package modelo;
 
 
-import Modelo.ClaseConexion;
+import modelo.ClaseConexion;
 import java.sql.*;
 import java.util.UUID;
 import javax.swing.JTable;
