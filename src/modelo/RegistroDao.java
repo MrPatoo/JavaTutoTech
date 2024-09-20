@@ -8,8 +8,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.UUID;
-import vista.login;
-import Modelo.ClaseConexion;
 
 
 public class RegistroDao {
