@@ -1,35 +1,22 @@
 package controlador;
 
-import java.awt.Panel;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import modelo.Tutoria;
-import vista.frmMenuPrincipal;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import vista.frmMenuPrincipal;      
 import vista.jpAddTutoria;
 
-public class ctrlMenuPrincipal implements MouseListener{
+public class ctrlMenuPrincipal implements ActionListener{
     
     //mandar a llamar las capas
     private frmMenuPrincipal vista;
     private jpAddTutoria panel;
     private Tutoria modelo;
-
+    
     public ctrlMenuPrincipal(frmMenuPrincipal menu) {
         vista = menu;
-    }
-    
-    //constructor
-    public ctrlMenuPrincipal(frmMenuPrincipal Vista, jpAddTutoria Panel, Tutoria Modelo){
-        this.vista = Vista;
-        this.panel = Panel;
-        this.modelo = Modelo;
-        
-        vista.btnIrTutoria.addMouseListener(this);
-        panel.btnAgregar.addMouseListener(this);
-        modelo.Mostrar(panel.jtbTutoria);
-        panel.btnEliminar.addMouseListener(this);
     }
     
     public void abrirApp(){
@@ -40,7 +27,7 @@ public class ctrlMenuPrincipal implements MouseListener{
     }
 
     @Override
-    public void mouseClicked(MouseEvent e) {
+    public void actionPerformed(ActionEvent e) {
         //para que se vea el panel
         if(e.getSource() == vista.btnIrTutoria){
             jpAddTutoria objAddTuto = new jpAddTutoria();
@@ -75,23 +62,5 @@ public class ctrlMenuPrincipal implements MouseListener{
             }
         }
     }
-
-    @Override
-    public void mousePressed(MouseEvent e) {
-    }
-
-    @Override
-    public void mouseReleased(MouseEvent e) {
-    }
-
-    @Override
-    public void mouseEntered(MouseEvent e) {
-    }
-
-    @Override
-    public void mouseExited(MouseEvent e) {
-    }
-    
-    
     
 }

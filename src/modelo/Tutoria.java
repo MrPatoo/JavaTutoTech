@@ -1,7 +1,7 @@
 package modelo;
 
 
-import Modelo.ClaseConexion;
+import modelo.ClaseConexion;
 import java.sql.*;
 import java.util.UUID;
 import javax.swing.JTable;
@@ -46,24 +46,68 @@ public class Tutoria {
     //METODOS////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     
     //GUARDAR------------------------------------------------------------------------------------------------------------------
-           public void GuardarTuto() {
-        //Creamos una variable igual a ejecutar el método de la clase de conexión
+            public void GuardarTuto() {
+        // Creamos una variable igual a ejecutar el método de la clase de conexión
         Connection conexion = ClaseConexion.getConexion();
+
+        // Generar ID para la nueva tutoría
+        String idTutoria = UUID.randomUUID().toString();
+
+        // Variables para el PreparedStatement
+        PreparedStatement addTutoria = null;
+        PreparedStatement insertAuditoria = null;
+
         try {
-            //Creamos el PreparedStatement que ejecutará la Query
-            PreparedStatement addTutoria = conexion.prepareStatement("INSERT INTO tbTutoria(idTutoria, nombreTutoria, descripcionTutoria) VALUES (?, ?, ?)");
-            //Establecer valores de la consulta SQL
-            addTutoria.setString(1, UUID.randomUUID().toString());
+            // Iniciar la transacción
+            conexion.setAutoCommit(false);
+
+            // Preparar la consulta para insertar en tbTutoria
+            addTutoria = conexion.prepareStatement("INSERT INTO tbTutoria(idTutoria, nombreTutoria, descripcionTutoria) VALUES (?, ?, ?)");
+
+            // Establecer valores de la consulta SQL
+            addTutoria.setString(1, idTutoria);
             addTutoria.setString(2, getNombreTutoria());
             addTutoria.setString(3, getDescripcionTutoria());
-            
-            //Ejecutar la consulta
+
+            // Ejecutar la consulta
             addTutoria.executeUpdate();
+
+            // Preparar la consulta para la tabla de auditoría
+            String sqlAuditoria = "INSERT INTO tbAuditoria (tipoAccion, tablaAfectada, idRegistroAfectado, descripcionAccion) "
+                                + "VALUES (?, ?, ?, ?)";
+
+            insertAuditoria = conexion.prepareStatement(sqlAuditoria);
+            insertAuditoria.setString(1, "INSERT"); // Tipo de acción
+            insertAuditoria.setString(2, "tbTutoria"); // Tabla afectada
+            insertAuditoria.setString(3, idTutoria); // ID del registro afectado
+            insertAuditoria.setString(4, "Inserción de una nueva tutoría con id: " + idTutoria); // Descripción de la acción
+
+            // Ejecutar la consulta de auditoría
+            insertAuditoria.executeUpdate();
+
+            // Confirmar la transacción
+            conexion.commit();
+
         } catch (SQLException ex) {
-            System.out.println("este es el error en el modelo:metodo guardar " + ex);
+            System.out.println("Este es el error en el modelo: método guardar " + ex);
+            try {
+                if (conexion != null) {
+                    conexion.rollback(); // Hacer rollback si ocurre un error
+                }
+            } catch (SQLException rollbackEx) {
+                System.out.println("Error al hacer rollback: " + rollbackEx);
+            }
+        } finally {
+            try {
+                if (addTutoria != null) addTutoria.close();
+                if (insertAuditoria != null) insertAuditoria.close();
+                conexion.setAutoCommit(true); // Restaurar el modo autocommit
+            } catch (SQLException e) {
+                System.out.println("Error al cerrar recursos: " + e);
+            }
         }
     }
-           
+
            //MOSTRAR////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
            public void Mostrar(JTable tabla) {
         //Creamos una variable de la clase de conexion
@@ -91,40 +135,66 @@ public class Tutoria {
     }
        
            //ELIMINAR//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-            public void Eliminar(JTable tabla) {
-        //Creamos una variable igual a ejecutar el método de la clase de conexión
-        Connection conexion = ClaseConexion.getConexion();
- 
-        //obtenemos que fila seleccionó el usuario
-        int filaSeleccionada = tabla.getSelectedRow();
-        //Obtenemos el id de la fila seleccionada
-        String miId = tabla.getValueAt(filaSeleccionada, 0).toString();
-        //borramos 
-        try {
-            PreparedStatement deleteEstudiante = conexion.prepareStatement("delete from tbTutoria where idTutoria = ?");
-            deleteEstudiante.setString(1, miId);
-            deleteEstudiante.executeUpdate();
-            
-            // Verificar la tabla de auditoría
-            PreparedStatement verificarAuditoria = conexion.prepareStatement(
-                "SELECT * FROM auditoria WHERE accion = 'DELETE' AND tabla_nombre = 'tbTutoria' ORDER BY fecha DESC FETCH FIRST 1 ROWS ONLY"
-            );
-            
-            ResultSet rs = verificarAuditoria.executeQuery();
-        
-            // Si hay un resultado, imprimimos la verificación de auditoría
-            if (rs.next()) {
-                String datosAnteriores = rs.getString("datos_anteriores");
-                System.out.println("Registro de auditoría (DELETE): " + datosAnteriores);
-            } else {
-                System.out.println("No se encontró registro de auditoría para el DELETE.");
+        public void Eliminar(JTable tabla) {
+            // Creamos una variable igual a ejecutar el método de la clase de conexión
+            Connection conexion = ClaseConexion.getConexion();
+
+            // Obtenemos que fila seleccionó el usuario
+            int filaSeleccionada = tabla.getSelectedRow();
+
+            // Obtenemos el id de la fila seleccionada
+            String miId = tabla.getValueAt(filaSeleccionada, 0).toString();
+
+            // Variables SQL para eliminación y auditoría
+            PreparedStatement deleteEstudiante = null;
+            PreparedStatement insertAuditoria = null;
+
+            try {
+                // Iniciar la transacción
+                conexion.setAutoCommit(false);
+
+                // Borrar el registro de la tabla tbTutoria
+                deleteEstudiante = conexion.prepareStatement("DELETE FROM tbTutoria WHERE idTutoria = ?");
+                deleteEstudiante.setString(1, miId);
+                deleteEstudiante.executeUpdate();
+
+                // Insertar el registro en la tabla de auditoría
+                String sqlAuditoria = "INSERT INTO tbAuditoria (tipoAccion, tablaAfectada, idRegistroAfectado, descripcionAccion) "
+                                    + "VALUES (?, ?, ?, ?)";
+
+                insertAuditoria = conexion.prepareStatement(sqlAuditoria);
+                insertAuditoria.setString(1, "DELETE"); // Tipo de acción
+                insertAuditoria.setString(2, "tbTutoria"); // Tabla afectada
+                insertAuditoria.setString(3, miId); // ID del registro afectado
+                insertAuditoria.setString(4, "Eliminación de una tutoría con id: " + miId); // Descripción de la acción
+
+                insertAuditoria.executeUpdate();
+
+                // Confirmar la transacción
+                conexion.commit();
+
+            } catch (Exception e) {
+                System.out.println("Este es el error en el método de eliminar: " + e);
+                try {
+                    if (conexion != null) {
+                        conexion.rollback(); // Hacemos rollback si ocurre un error
+                    }
+                } catch (SQLException ex) {
+                    System.out.println("Error al hacer rollback: " + ex);
+                }
+            } finally {
+                try {
+                    if (deleteEstudiante != null) deleteEstudiante.close();
+                    if (insertAuditoria != null) insertAuditoria.close();
+                    conexion.setAutoCommit(true); // Restauramos el modo autocommit
+                } catch (SQLException e) {
+                    System.out.println("Error al cerrar recursos: " + e);
+                }
             }
-        } catch (Exception e) {
-            System.out.println("este es el error metodo de eliminar" + e);
         }
+
         
         
-    }    
     //CARGAR/////////////////////////////////////////////////////////////////////    
     public void cargarDatosTabla(jpAddTutoria vista) {
         // Obtén la fila seleccionada 
@@ -172,24 +242,6 @@ public void Actualizar(JTable tabla) {
             updateUser.setString(2, getDescripcionTutoria());
             updateUser.setString(3, miUUId);
             updateUser.executeUpdate();
-
-            // Insertar en la tabla de auditoría el cambio realizado
-            PreparedStatement auditoriaUpdate = conexion.prepareStatement(
-                "INSERT INTO auditoria (tabla_nombre, accion, datos_anteriores, datos_nuevos) VALUES (?, ?, ?, ?)"
-            );
-
-            auditoriaUpdate.setString(1, "tbTutoria");
-            auditoriaUpdate.setString(2, "UPDATE");
-
-            // Concatenamos los datos anteriores y nuevos para almacenarlos en la auditoría
-            String datosAnteriores = "nombreTutoria: " + nombreTutoriaAnterior + ", descripcionTutoria: " + descripcionTutoriaAnterior;
-            String datosNuevos = "nombreTutoria: " + getNombreTutoria() + ", descripcionTutoria: " + getDescripcionTutoria();
-
-            auditoriaUpdate.setString(3, datosAnteriores);
-            auditoriaUpdate.setString(4, datosNuevos);
-
-            // Ejecutamos la auditoría
-            auditoriaUpdate.executeUpdate();
 
         } catch (Exception e) {
             System.out.println("Este es el error en el método de actualizar: " + e);

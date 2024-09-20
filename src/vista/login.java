@@ -10,7 +10,6 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
-import modelo.LoginDao;
 
 /**
  *
@@ -24,12 +23,7 @@ public class login extends javax.swing.JFrame {
     public login() {
         initComponents();
     }
-    
-    public static void initlogin(){
-    LoginDao Modelo = new LoginDao();
-    login Vista = new login();
-    controlador.LoginController Controlador = new controlador.LoginController(Modelo, Vista);
-    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

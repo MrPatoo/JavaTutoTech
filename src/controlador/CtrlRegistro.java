@@ -8,8 +8,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.Objects;
+import java.util.UUID;
 import javax.swing.JOptionPane;
-import modelo.RegistroDao;
+import modelo.Usuario;
 import vista.frmRegistro;
 import vista.login;
 
@@ -20,7 +22,7 @@ import vista.login;
 public class CtrlRegistro extends MouseAdapter implements ActionListener {
 
     private final frmRegistro frmRegistro;
-    private RegistroDao registroDao;
+    private Usuario registroDao;
 
     public CtrlRegistro(frmRegistro vista) {
         frmRegistro = vista;
@@ -70,12 +72,23 @@ public class CtrlRegistro extends MouseAdapter implements ActionListener {
 
     private void accionBtnRegUser() {
 
-        registroDao = new RegistroDao();
+        registroDao = new Usuario();
 
+        //deben de valodar los campos de entrada, para que no haya errores.
+        //por ejemplo
+        if(Objects.isNull(frmRegistro.getTxtNombreUser().getText()) || frmRegistro.getTxtNombreUser().getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "El campo nombre de usuario es requerido");
+            return;
+        }
+        
         registroDao.registrarUsuario(
+                UUID.randomUUID().toString(), 
                 frmRegistro.getTxtNombreUser().getText(),
-                Integer.parseInt(frmRegistro.getTxtEdadU().getText()), frmRegistro.getTxtMail().getText(),
-                frmRegistro.getTxtClave().getText());
+                Integer.parseInt(frmRegistro.getTxtEdadU().getText()), 
+                frmRegistro.getTxtMail().getText(),
+                frmRegistro.getTxtClave().getText(),
+                "", 
+                2);
 
         login lo = new login();
         frmRegistro.dispose();

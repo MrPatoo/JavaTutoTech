@@ -10,7 +10,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JOptionPane;
-import modelo.LoginDao;
+import modelo.Usuario;
 import vista.frmMenuPrincipal;
 import vista.frmRegistro;
 import vista.login;
@@ -23,7 +23,7 @@ import vista.recuperacionClave;
 public class LoginController implements ActionListener {
     
     private login vista;
-    private LoginDao loginDao;
+    private Usuario loginDao;
     
     private String usuario;
     private String clave;
@@ -33,9 +33,6 @@ public class LoginController implements ActionListener {
         vista.setLocationRelativeTo(null);
         vista.setVisible(true);
         addListener();
-    }
-
-    public LoginController(LoginDao Modelo, login Vista) {
     }
     
     private void addListener(){
@@ -88,7 +85,7 @@ public class LoginController implements ActionListener {
     }
     
     private void validaAcceso(){
-        loginDao = new LoginDao();
+        loginDao = new Usuario();
         
         if(loginDao.validarCredenciales(usuario, clave)){
         //if(true){

@@ -21,11 +21,11 @@ public class jpAddTutoria extends javax.swing.JPanel {
     public jpAddTutoria() {
         initComponents();
         
-        jpAddTutoria panel = this;
+        jpAddTutoria Panel = this;
         frmMenuPrincipal vista = new frmMenuPrincipal();
         Tutoria modelo = new Tutoria();
         
-        ctrlMenuPrincipal controlador = new ctrlMenuPrincipal(vista, panel, modelo);
+        ctrlMenuPrincipal controlador = new ctrlMenuPrincipal(vista);
     }
     
     

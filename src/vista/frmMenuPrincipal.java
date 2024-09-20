@@ -29,7 +29,7 @@ public class frmMenuPrincipal extends javax.swing.JFrame {
         jpAddTutoria panel = new jpAddTutoria();
         Tutoria modelo = new Tutoria();
         //tienen que ir todos en orden
-        ctrlMenuPrincipal controlador = new ctrlMenuPrincipal(vista, panel, modelo);
+        ctrlMenuPrincipal controlador = new ctrlMenuPrincipal(vista);
         
         vista.setVisible(true);
       

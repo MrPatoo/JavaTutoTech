@@ -4,10 +4,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.Random;
 import javax.swing.JOptionPane;
+import modelo.CambioClave;
 import modelo.EnviarCorreo;
-import modelo.LoginDao;
+import modelo.Usuario;
+import vista.frmCambioContrasenia;
 import vista.login;
 import vista.recuperacionClave;
 
@@ -63,10 +64,10 @@ public class CtrlIngresoCorreo implements ActionListener {
             return;
         }
 
-        LoginDao ld = new LoginDao();
+        Usuario ld = new Usuario();
+        CambioClave cc = new CambioClave();
 
-        //if(!ld.validarUsuario(correo.toUpperCase())){
-        if (1 != 1) {
+        if(!ld.validarUsuario(correo.toUpperCase())){
             JOptionPane.showMessageDialog(null, "El correo no existe en nuestros registros");
             return;
         }
@@ -74,20 +75,19 @@ public class CtrlIngresoCorreo implements ActionListener {
         int caracteres = (int) (Math.random() * 99999);
 
         String titulo = "Recuperacion de contraseña";
-        String contenido = "Esta es tu nueva contraseña:  " + caracteres;
+        String contenido = "Codigo generado:  " + caracteres;
 
         boolean enviado = EnviarCorreo.enviarCorreo(correo, titulo, contenido);
 
-        if (enviado)
-            ld.actualizarClave(correo.toUpperCase(), caracteres+"");
 
         JOptionPane.showMessageDialog(null,
                 enviado ? "Se ha enviado el correo" : "No se pudo enviar el correo");
 
         if (enviado) {
-            login login = new login();
+            cc.almacenarRegistro(correo, String.valueOf(caracteres));
+            frmCambioContrasenia frmCambio = new frmCambioContrasenia();
             vista.dispose();
-            new LoginController(login);
+            new CambioClaveController(frmCambio);
         }
 
     }
