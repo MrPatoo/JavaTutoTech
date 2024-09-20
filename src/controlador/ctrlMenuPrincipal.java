@@ -19,6 +19,23 @@ public class ctrlMenuPrincipal implements ActionListener{
         vista = menu;
     }
     
+<<<<<<< HEAD
+=======
+    //constructor
+    public ctrlMenuPrincipal(frmMenuPrincipal Vista, jpAddTutoria Panel, Tutoria Modelo){
+        this.vista = Vista;
+        this.panel = Panel;
+        this.modelo = Modelo;
+        
+        vista.btnIrTutoria.addMouseListener(this);
+        panel.btnAgregar.addMouseListener(this);
+        modelo.Mostrar(panel.jtbTutoria);
+        panel.btnEliminar.addMouseListener(this);
+        panel.btnActualizar.addMouseListener(this);
+        panel.btnLimpiar.addMouseListener(this);
+    }
+    
+>>>>>>> 0be7e813114b54de88c0829f52d82b9e48f33d12
     public void abrirApp(){
         vista.setTitle("Dashboard");
         vista.setLocationRelativeTo(null);
@@ -52,7 +69,17 @@ public class ctrlMenuPrincipal implements ActionListener{
             modelo.Mostrar(panel.jtbTutoria);
 
             
+            if (e.getSource() == panel.btnActualizar ) {
+            modelo.setNombreTutoria(panel.txtNombre.getText());
+            modelo.setDescripcionTutoria(panel.txtDescripcion.getText());
             
+            modelo.Actualizar(panel.jtbTutoria);
+            modelo.Mostrar(panel.jtbTutoria);
+        }
+        
+        if (e.getSource() == panel.btnLimpiar ) {
+            modelo.LimpiarDatos(panel);
+        }
             
                    
             //validaciones---------------------------------------------------------------------------------------
@@ -60,6 +87,8 @@ public class ctrlMenuPrincipal implements ActionListener{
                 //esto es un alert
                 JOptionPane.showMessageDialog(vista, "Llene todos los campos");
             }
+            
+            
         }
     }
     
