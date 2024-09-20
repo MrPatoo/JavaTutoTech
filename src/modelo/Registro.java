@@ -10,7 +10,7 @@ import java.sql.SQLException;
 import java.util.UUID;
 
 
-public class RegistroDao {
+public class Registro {
 
     public boolean validarCampos(String nombre, int edad, String correo, String contrasena) {
         if (nombre.isEmpty() || correo.isEmpty() || contrasena.isEmpty()) {
