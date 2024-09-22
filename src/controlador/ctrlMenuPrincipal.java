@@ -5,10 +5,12 @@ import javax.swing.JOptionPane;
 import modelo.Tutoria;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import vista.frmMenuPrincipal;      
 import vista.jpAddTutoria;
 
-public class ctrlMenuPrincipal implements ActionListener{
+public class ctrlMenuPrincipal implements ActionListener, MouseListener{
     
     //mandar a llamar las capas
     private frmMenuPrincipal vista;
@@ -16,7 +18,11 @@ public class ctrlMenuPrincipal implements ActionListener{
     private Tutoria modelo;
     
     public ctrlMenuPrincipal(frmMenuPrincipal menu) {
-        vista = menu;
+        this.vista = menu;
+        //this.panel = panel;
+        //this.modelo = modelo;
+        
+        vista.btnIrTutoria.addMouseListener(this);
     }
     
     public void abrirApp(){
@@ -28,7 +34,12 @@ public class ctrlMenuPrincipal implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        //para que se vea el panel
+ //No Usar
+    }
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+         //para que se vea el panel
         if(e.getSource() == vista.btnIrTutoria){
             jpAddTutoria objAddTuto = new jpAddTutoria();
             
@@ -70,9 +81,23 @@ public class ctrlMenuPrincipal implements ActionListener{
                 //esto es un alert
                 JOptionPane.showMessageDialog(vista, "Llene todos los campos");
             }
-            
-            
-        }
+    }
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
     }
     
 }
