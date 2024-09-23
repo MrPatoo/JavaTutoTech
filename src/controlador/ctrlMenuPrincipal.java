@@ -17,24 +17,25 @@ public class ctrlMenuPrincipal implements ActionListener, MouseListener{
     private jpAddTutoria panel;
     private Tutoria modelo;
     
-    public ctrlMenuPrincipal(frmMenuPrincipal menu) {
-        this.vista = menu;
-        //this.panel = panel;
-        //this.modelo = modelo;
+    public ctrlMenuPrincipal(frmMenuPrincipal Vista, jpAddTutoria Panel, Tutoria Modelo  ) {
+        this.vista = Vista;
+        this.panel = Panel;
+        this.modelo = Modelo;
+    
         
         vista.btnIrTutoria.addMouseListener(this);
+        
+            vista.jpContenedor.removeAll();
+            vista.jpContenedor.add(Vista);
+            vista.jpContenedor.revalidate();
+            vista.jpContenedor.repaint();
     }
     
-    public void abrirApp(){
-        vista.setTitle("Dashboard");
-        vista.setLocationRelativeTo(null);
-        vista.setVisible(true);
-        vista.setExtendedState(JFrame.NORMAL);
-    }
+   
 
     @Override
     public void actionPerformed(ActionEvent e) {
- //No Usar
+ //No UsarXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
     }
 
     @Override

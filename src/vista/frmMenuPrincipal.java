@@ -31,7 +31,7 @@ public class frmMenuPrincipal extends javax.swing.JFrame {
         jpAddTutoria panel = new jpAddTutoria();
         Tutoria modelo = new Tutoria();
         //tienen que ir todos en orden
-        ctrlMenuPrincipal controlador = new ctrlMenuPrincipal(vista);
+        ctrlMenuPrincipal controlador = new ctrlMenuPrincipal(vista, panel, modelo);
         
         vista.setVisible(true);
       
@@ -116,7 +116,7 @@ public class frmMenuPrincipal extends javax.swing.JFrame {
      */
     public static void main(String args[]) {
     
-        JFrame frame = new JFrame("jpContenedor");
+       /* JFrame frame = new JFrame("jpContenedor");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(400, 600);
 
@@ -125,7 +125,7 @@ public class frmMenuPrincipal extends javax.swing.JFrame {
         frame.add(scrollPane);
 
         frame.setVisible(true);
-        
+        */
         
         
         
