@@ -3,16 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Steven/JavaProjects/JavaTutoTech/src/utils/Constantes.java</file>
-            <file>file:/C:/Users/Steven/JavaProjects/JavaTutoTech/src/controlador/LoginController.java</file>
-            <file>file:/C:/Users/Steven/JavaProjects/JavaTutoTech/src/vista/recuperacionClave.java</file>
-            <file>file:/C:/Users/Steven/JavaProjects/JavaTutoTech/src/controlador/ctrlMenuPrincipal.java</file>
-            <file>file:/C:/Users/Steven/JavaProjects/JavaTutoTech/src/vista/jpAddTutoria.java</file>
-            <file>file:/C:/Users/Steven/JavaProjects/JavaTutoTech/src/modelo/UsuarioModelo.java</file>
-            <file>file:/C:/Users/Steven/JavaProjects/JavaTutoTech/src/modelo/ClaseConexion.java</file>
-            <file>file:/C:/Users/Steven/JavaProjects/JavaTutoTech/src/controlador/CtrlIngresoCorreo.java</file>
-            <file>file:/C:/Users/Steven/JavaProjects/JavaTutoTech/src/controlador/MainInit.java</file>
-            <file>file:/C:/Users/Steven/JavaProjects/JavaTutoTech/src/controlador/CtrlRegistro.java</file>
+            <file>file:/C:/Users/USUARIO/Desktop/JavaTutoTech/src/modelo/Usuario.java</file>
+            <file>file:/C:/Users/USUARIO/Desktop/JavaTutoTech/src/controlador/ctrlMenuPrincipal.java</file>
+            <file>file:/C:/Users/USUARIO/Desktop/JavaTutoTech/src/modelo/ClaseConexion.java</file>
+            <file>file:/C:/Users/USUARIO/Desktop/JavaTutoTech/src/controlador/LoginController.java</file>
         </group>
     </open-files>
 </project-private>

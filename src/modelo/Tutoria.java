@@ -3,6 +3,7 @@ package modelo;
 
 import modelo.ClaseConexion;
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.UUID;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -257,4 +258,26 @@ public void Actualizar(JTable tabla) {
         vista.txtDescripcion.setText("");
     }
     //
+    
+    
+    
+    
+    //card-----------------------------------------------------------------
+    public ArrayList<String> getTuto() {
+        ArrayList<String> tutoname = new ArrayList<>();
+        Connection con = new ClaseConexion().getConexion();
+        try {
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT nombreTutoria FROM tbTutoria");
+            while (rs.next()) {
+                tutoname.add(rs.getString("nombreTutoria"));
+            }
+            rs.close();
+            stmt.close();
+            con.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return tutoname;
+    }
 }
