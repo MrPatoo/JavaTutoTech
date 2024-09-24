@@ -71,14 +71,14 @@ public class Usuario {
         this.rol = rol;
     }
 
-    public boolean validarCredenciales(String usuario, String clave) {
+    public boolean validarCredenciales() {
         Connection con = ClaseConexion.getConexion();
 
         try {
 
             Statement st = con.createStatement();
-            String sql = "select * from tbUsuario where upper(correoUsuario) = '".concat(usuario)
-                    .concat("' and contrasenaUsuario = '").concat(clave).concat("'");
+            String sql = "select * from tbUsuario where upper(correoUsuario) = '".concat(getCorreo())
+                    .concat("' and contrasenaUsuario = '").concat(getContrasena()).concat("'");
             ResultSet rs = st.executeQuery(sql);
 
             return rs.next();
@@ -97,13 +97,13 @@ public class Usuario {
         }
     }
 
-    public boolean validarUsuario(String usuario) {
+    public boolean validarUsuario() {
         Connection con = ClaseConexion.getConexion();
 
         try {
 
             Statement st = con.createStatement();
-            String sql = "select * from tbUsuario where upper(correoUsuario) = '".concat(usuario).concat("'");
+            String sql = "select * from tbUsuario where upper(correoUsuario) = '".concat(getCorreo()).concat("'");
             ResultSet rs = st.executeQuery(sql);
 
             return rs.next();
@@ -122,14 +122,14 @@ public class Usuario {
         }
     }
 
-    public int actualizarClave(String correo, String clave) {
+    public int actualizarClave() {
         Connection con = ClaseConexion.getConexion();
 
         try {
 
             Statement st = con.createStatement();
-            String sql = "update tbUsuario set contrasenaUsuario = '".concat(clave)
-                    .concat("' where correoUsuario = '").concat(correo).concat("'");
+            String sql = "update tbUsuario set contrasenaUsuario = '".concat(getContrasena())
+                    .concat("' where correoUsuario = '").concat(getCorreo()).concat("'");
             return st.executeUpdate(sql);
 
         } catch (Exception e) {

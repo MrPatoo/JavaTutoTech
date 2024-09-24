@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import javax.swing.JOptionPane;
 import modelo.CambioClave;
 import modelo.EnviarCorreo;
@@ -16,7 +17,7 @@ import vista.recuperacionClave;
  *
  * @author Steven
  */
-public class CtrlIngresoCorreo implements ActionListener {
+public class CtrlIngresoCorreo implements MouseListener {
 
     private recuperacionClave vista;
 
@@ -29,9 +30,40 @@ public class CtrlIngresoCorreo implements ActionListener {
         addListener();
     }
 
-    private void addListener() {
-        vista.getjTxtMailRecu().addActionListener(this);
-        vista.getjBtnEnviaCorreo().addActionListener(this);
+    @Override
+    public void mouseClicked(MouseEvent e) {
+         if (e.getSource() == vista.getjTxtMailRecu()) {
+            vista.getjTxtMailRecu().requestFocus();
+        }
+
+        if (e.getSource() == vista.getjBtnEnviaCorreo()) {
+            generarEmail();
+        }
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+    
+        private void addListener() {
+        vista.getjTxtMailRecu().addMouseListener(this);
+        vista.getjBtnEnviaCorreo().addMouseListener(this);
 
         vista.getjLblIniSesion().addMouseListener(new MouseAdapter() {
 
@@ -41,18 +73,6 @@ public class CtrlIngresoCorreo implements ActionListener {
                 new LoginController(login);
             }
         });
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-
-        if (e.getSource() == vista.getjTxtMailRecu()) {
-            vista.getjTxtMailRecu().requestFocus();
-        }
-
-        if (e.getSource() == vista.getjBtnEnviaCorreo()) {
-            generarEmail();
-        }
     }
 
     private void generarEmail() {
@@ -66,8 +86,9 @@ public class CtrlIngresoCorreo implements ActionListener {
 
         Usuario ld = new Usuario();
         CambioClave cc = new CambioClave();
+        ld.setCorreo(correo.toUpperCase());
 
-        if(!ld.validarUsuario(correo.toUpperCase())){
+        if(!ld.validarUsuario()){
             JOptionPane.showMessageDialog(null, "El correo no existe en nuestros registros");
             return;
         }
@@ -91,4 +112,5 @@ public class CtrlIngresoCorreo implements ActionListener {
         }
 
     }
+
 }

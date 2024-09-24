@@ -68,14 +68,14 @@ public class CambioClave {
         }
     }
 
-    public CambioClave encontroCodigo(String codigo) {
+    public CambioClave encontroCodigo() {
         Connection conexion = ClaseConexion.getConexion();
         try {
 
             CambioClave cv = null;
             Statement st = conexion.createStatement();
             String sql = "select * from tbRegistroCodigo where codigo = '"
-                    .concat(codigo).concat("' and estado = 'A'");
+                    .concat(getCodigo()).concat("' and estado = 'A'");
 
             ResultSet rs = st.executeQuery(sql);
             if (rs.next()) {
@@ -100,14 +100,14 @@ public class CambioClave {
         }
     }
 
-    public boolean actualizarEstado(String correo, String codigo) {
+    public boolean actualizarEstado() {
         Connection conexion = ClaseConexion.getConexion();
 
         try {
             Statement st = conexion.createStatement();
             String sql = "update tbRegistroCodigo set estado = '".concat("I")
-                    .concat("' Where correo = '").concat(correo)
-                    .concat("' and codigo = '").concat(codigo).concat("'");
+                    .concat("' Where correo = '").concat(getCorreo())
+                    .concat("' and codigo = '").concat(getCodigo()).concat("'");
 
             return st.executeUpdate(sql) > 0;
         } catch (SQLException e) {

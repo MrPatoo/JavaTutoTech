@@ -4,20 +4,22 @@
  */
 package controlador;
 
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.Objects;
 import javax.swing.JOptionPane;
 import modelo.CambioClave;
 import modelo.Usuario;
 import vista.frmCambioContrasenia;
 import vista.login;
+
 /**
  *
  * @author Steven
  */
-public class CambioClaveController implements ActionListener {
+public class CambioClaveController implements MouseListener {
 
     private frmCambioContrasenia cambioClave;
     private final String VALIDAR = "Validar Codigo";
@@ -33,12 +35,51 @@ public class CambioClaveController implements ActionListener {
     }
 
     private void adicionarListener() {
-        this.cambioClave.getjTxtCode().addActionListener(this);
-        this.cambioClave.getjTxtClave1().addActionListener(this);
-        this.cambioClave.getjTxtClave2().addActionListener(this);
-        this.cambioClave.getjBtnEnviar().addActionListener(this);
+        this.cambioClave.getjTxtCode().addMouseListener(this);
+        this.cambioClave.getjTxtClave1().addMouseListener(this);
+        this.cambioClave.getjTxtClave2().addMouseListener(this);
+        this.cambioClave.getjBtnEnviar().addMouseListener(this);
     }
 
+    @Override
+    public void mouseClicked(MouseEvent e) {
+        if (e.getSource() == cambioClave.getjTxtCode()) {
+            cambioClave.getjTxtCode().requestFocus();
+        }
+
+        if (e.getSource() == cambioClave.getjTxtClave1()) {
+            cambioClave.getjTxtClave1().requestFocus();
+        }
+
+        if (e.getSource() == cambioClave.getjTxtClave2()) {
+            cambioClave.getjTxtClave2().requestFocus();
+        }
+
+        if (e.getSource() == cambioClave.getjBtnEnviar()) {
+            generarAccionBtn();
+        }
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+    
     private void desabilitarCampos(boolean primeraVez) {
         if (primeraVez) {
             this.cambioClave.getjLblCode().setVisible(true);
@@ -59,27 +100,6 @@ public class CambioClaveController implements ActionListener {
         }
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-
-        if (e.getSource() == cambioClave.getjTxtCode()) {
-            cambioClave.getjTxtCode().requestFocus();
-        }
-
-        if (e.getSource() == cambioClave.getjTxtClave1()) {
-            cambioClave.getjTxtClave1().requestFocus();
-        }
-
-        if (e.getSource() == cambioClave.getjTxtClave2()) {
-            cambioClave.getjTxtClave2().requestFocus();
-        }
-
-        if (e.getSource() == cambioClave.getjBtnEnviar()) {
-            generarAccionBtn();
-        }
-
-    }
-
     private void generarAccionBtn() {
 
         if (cambioClave.getjBtnEnviar().getText().equals(VALIDAR)) {
@@ -90,8 +110,9 @@ public class CambioClaveController implements ActionListener {
             }
 
             CambioClave cv = new CambioClave();
+            cv.setCodigo(cambioClave.getjTxtCode().getText());
 
-            modelo = cv.encontroCodigo(cambioClave.getjTxtCode().getText());
+            modelo = cv.encontroCodigo();
 
             if (Objects.isNull(modelo)) {
                 JOptionPane.showMessageDialog(null, "Codigo no valido.");
@@ -118,9 +139,14 @@ public class CambioClaveController implements ActionListener {
 
             CambioClave cv = new CambioClave();
             Usuario u = new Usuario();
+            u.setCorreo(modelo.getCorreo());
+            u.setContrasena(cambioClave.getjTxtClave1().getText());
+            
+            cv.setCodigo(modelo.getCodigo());
+            cv.setCorreo(modelo.getCorreo());
 
-            cv.actualizarEstado(modelo.getCorreo(), modelo.getCodigo());
-            int value = u.actualizarClave(modelo.getCorreo(), cambioClave.getjTxtClave1().getText());
+            cv.actualizarEstado();
+            int value = u.actualizarClave();
 
             if (value > 0) {
                 JOptionPane.showMessageDialog(null, "Se ha actualizado la clave.");
