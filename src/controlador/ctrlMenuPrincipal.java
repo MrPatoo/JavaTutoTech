@@ -24,11 +24,14 @@ public class ctrlMenuPrincipal implements ActionListener, MouseListener{
     
         
         vista.btnIrTutoria.addMouseListener(this);
-        
-            vista.jpContenedor.removeAll();
-            vista.jpContenedor.add(Vista);
-            vista.jpContenedor.revalidate();
-            vista.jpContenedor.repaint();
+        modelo.Mostrar(panel.jtbTutoria);
+        panel.btnAgregar.addMouseListener(this);
+        panel.btnEliminar.addMouseListener(this);
+        panel.btnActualizar.addMouseListener(this);
+        panel.btnAgregar.addMouseListener(this);
+        panel.btnAgregar.addMouseListener(this);
+
+           
     }
     
    
@@ -54,7 +57,7 @@ public class ctrlMenuPrincipal implements ActionListener, MouseListener{
         if(e.getSource() == panel.btnAgregar){
             modelo.setNombreTutoria(panel.txtNombre.getText());
             modelo.setDescripcionTutoria(panel.txtDescripcion.getText());
-            
+            modelo.LimpiarDatos(panel);
             
             modelo.GuardarTuto();
         }
@@ -63,7 +66,8 @@ public class ctrlMenuPrincipal implements ActionListener, MouseListener{
             modelo.Eliminar(panel.jtbTutoria);
             modelo.Mostrar(panel.jtbTutoria);
 
-            
+        }
+        
             if (e.getSource() == panel.btnActualizar ) {
             modelo.setNombreTutoria(panel.txtNombre.getText());
             modelo.setDescripcionTutoria(panel.txtDescripcion.getText());
@@ -83,7 +87,7 @@ public class ctrlMenuPrincipal implements ActionListener, MouseListener{
                 JOptionPane.showMessageDialog(vista, "Llene todos los campos");
             }
     }
-    }
+    
 
     @Override
     public void mousePressed(MouseEvent e) {
