@@ -7,6 +7,7 @@ package vista;
 import controlador.ctrlMenuPrincipal;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
+import modelo.CardTuto;
 import modelo.Tutoria;
 
 /**
@@ -120,7 +121,7 @@ public class frmMenuPrincipal extends javax.swing.JFrame {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(400, 600);
 
-        Tutoria tutoPanel = new Tutoria();
+        CardTuto tutoPanel = new CardTuto();
         JScrollPane scrollPane = new JScrollPane(tutoPanel);
         frame.add(scrollPane);
 
