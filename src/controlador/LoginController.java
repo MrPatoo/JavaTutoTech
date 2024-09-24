@@ -15,6 +15,7 @@ import modelo.Tutoria;
 import modelo.Usuario;
 import vista.frmMenuPrincipal;
 import vista.frmRegistro;
+import vista.jpAddLeccion;
 import vista.jpAddTutoria;
 import vista.login;
 import vista.recuperacionClave;
@@ -89,7 +90,7 @@ public class LoginController implements MouseListener {
 
                 if (usuarioModelo.validarCredenciales()) {
                     vista.dispose();
-                    new ctrlMenuPrincipal(new frmMenuPrincipal(), new jpAddTutoria(), new Tutoria());
+                    new ctrlMenuPrincipal(new frmMenuPrincipal(), new jpAddTutoria(), new Tutoria(), new jpAddLeccion());
                 } else {
                     JOptionPane.showMessageDialog(null, "Usuario o contraseña no valido");
                 }

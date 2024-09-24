@@ -209,7 +209,7 @@ public class Tutoria {
 
             // Establece los valores en los campos de texto
             vista.txtNombre.setText(NombreDeTB);
-            vista.txtDescripcion.setText(DescripcionDeTB);
+            vista.txtNombre.setText(DescripcionDeTB);
         }
     }
     //ACTUALIZAR/////////////////////////////////////////////////////
@@ -257,7 +257,7 @@ public class Tutoria {
     public void LimpiarDatos(jpAddTutoria vista) {
         // Establece los valores en los campos de texto
         vista.txtNombre.setText("");
-        vista.txtDescripcion.setText("");
+        vista.txtNombre.setText("");
     }
     //
 
