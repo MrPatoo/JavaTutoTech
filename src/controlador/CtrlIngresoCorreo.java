@@ -10,7 +10,7 @@ import modelo.CambioClave;
 import modelo.EnviarCorreo;
 import modelo.Usuario;
 import vista.frmCambioContrasenia;
-import vista.login;
+import vista.FrmLogin;
 import vista.recuperacionClave;
 
 /**
@@ -20,6 +20,7 @@ import vista.recuperacionClave;
 public class CtrlIngresoCorreo implements MouseListener {
 
     private recuperacionClave vista;
+    private Usuario modelo;
 
     private String correo;
 
@@ -64,9 +65,9 @@ public class CtrlIngresoCorreo implements MouseListener {
         vista.getjLblIniSesion().addMouseListener(new MouseAdapter() {
 
             public void mouseClicked(MouseEvent e) {
-                login login = new login();
+                FrmLogin login = new FrmLogin();
                 vista.dispose();
-                new LoginController(login);
+                new CtrlLogin(login);
             }
         });
     }

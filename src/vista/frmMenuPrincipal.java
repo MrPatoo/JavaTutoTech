@@ -126,20 +126,7 @@ public class frmMenuPrincipal extends javax.swing.JFrame {
      */
     public static void main(String args[]) {
     
-       /* JFrame frame = new JFrame("jpContenedor");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(400, 600);
-
-        CardTuto tutoPanel = new CardTuto();
-        JScrollPane scrollPane = new JScrollPane(tutoPanel);
-        frame.add(scrollPane);
-
-        frame.setVisible(true);
-        */
-        
-        
-        
-        
+ 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 initfrmMenuPrincipal();

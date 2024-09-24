@@ -4,10 +4,14 @@
  */
 package vista;
 
+import controlador.CtrlRegistro;
+import controlador.ctrlMenuPrincipal;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import modelo.Tutoria;
+import modelo.Usuario;
 
 /**
  *
@@ -21,6 +25,19 @@ public class frmRegistro extends javax.swing.JFrame {
     public frmRegistro() {
         initComponents();
     }
+    
+    public static void initfrmRegistro(){
+        Usuario modelo = new Usuario();
+        frmRegistro vista = new frmRegistro();
+        //tienen que ir todos en orden
+        CtrlRegistro controlador = new CtrlRegistro(modelo, vista);
+        
+        vista.setVisible(true);
+      
+        
+    }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -299,13 +316,13 @@ public class frmRegistro extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel12;
     public javax.swing.JLabel lbIrasesion;
     public javax.swing.JLabel lblSesion;
-    private javax.swing.JPasswordField txtClave;
+    public javax.swing.JPasswordField txtClave;
     private javax.swing.JPasswordField txtContra;
     private javax.swing.JTextField txtCorreo;
-    private javax.swing.JTextField txtEdadU;
-    private javax.swing.JTextField txtMail;
+    public javax.swing.JTextField txtEdadU;
+    public javax.swing.JTextField txtMail;
     private javax.swing.JTextField txtNombre;
-    private javax.swing.JTextField txtNombreUser;
+    public javax.swing.JTextField txtNombreUser;
     private javax.swing.JTextField txtedad;
     // End of variables declaration//GEN-END:variables
 

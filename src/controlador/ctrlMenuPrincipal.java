@@ -25,8 +25,7 @@ public class ctrlMenuPrincipal implements MouseListener {
         this.modelo = Modelo;
         this.panelLec = PanelLec;
         
-        vista.setLocationRelativeTo(null);
-        vista.setVisible(true);
+      
         //panel tutoria--------------------------------
         vista.btnIrTutoria.addMouseListener(this);
         modelo.Mostrar(panel.jtbTutoria);
@@ -70,8 +69,9 @@ public class ctrlMenuPrincipal implements MouseListener {
             modelo.setNombreTutoria(panel.txtNombre.getText());
             modelo.setDescripcionTutoria(panel.txtDescripcion.getText());
             modelo.LimpiarDatos(panel);
-            modelo.Mostrar(panel.jtbTutoria);
+          
             modelo.GuardarTuto();
+              modelo.Mostrar(panel.jtbTutoria);
             System.out.println("Funciona");
 
         }

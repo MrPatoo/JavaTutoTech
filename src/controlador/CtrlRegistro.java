@@ -8,91 +8,69 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.Objects;
-import java.util.UUID;
+import java.awt.event.MouseListener;
 import javax.swing.JOptionPane;
 import modelo.Usuario;
 import vista.frmRegistro;
-import vista.login;
+import vista.FrmLogin;
 
 /**
  *
  * @author Carlos H
  */
-public class CtrlRegistro extends MouseAdapter implements ActionListener {
-
-    private final frmRegistro frmRegistro;
-    private Usuario registroDao;
-
-    public CtrlRegistro(frmRegistro vista) {
-        frmRegistro = vista;
-        frmRegistro.setLocationRelativeTo(null);
-        frmRegistro.setVisible(true);
-
-        frmRegistro.getBtnRegUser().addActionListener(this);
-        frmRegistro.getTxtMail().addActionListener(this);
-        frmRegistro.getTxtNombreUser().addActionListener(this);
-        frmRegistro.getTxtEdadU().addActionListener(this);
-        frmRegistro.getTxtClave().addActionListener(this);
-
-        frmRegistro.getLblSesion().addMouseListener(new MouseAdapter() {
-
-            public void mouseClicked(MouseEvent e) {
-                login lo = new login();
-                frmRegistro.dispose();
-                new LoginController(lo);
-            }
-        });
+public class CtrlRegistro implements MouseListener{
+    
+    //1-Llamar a las otras capas
+    Usuario modelo;
+    frmRegistro vista;
+    FrmLogin vistaFrmLogin;
+    
+    //2-Constructor 
+    public CtrlRegistro(Usuario Modelo, frmRegistro vista){
+        this.modelo = Modelo;
+        this.vista = vista;
+        
+        vista.btnRegUser.addMouseListener(this);
+        vista.lblSesion.addMouseListener(this);
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {
-
-        if (e.getSource() == frmRegistro.getTxtMail()) {
-            frmRegistro.getTxtMail().requestFocus();
-        }
-
-        if (e.getSource() == frmRegistro.getTxtNombreUser()) {
-            frmRegistro.getTxtNombreUser().requestFocus();
-        }
-
-        if (e.getSource() == frmRegistro.getTxtEdadU()) {
-            frmRegistro.getTxtEdadU().requestFocus();
-        }
-
-        if (e.getSource() == frmRegistro.getTxtClave()) {
-            frmRegistro.getTxtClave().requestFocus();
-        }
-
-        if (e.getSource() == frmRegistro.getBtnRegUser()) {
-            accionBtnRegUser();
-        }
-
-    }
-
-    private void accionBtnRegUser() {
-
-        registroDao = new Usuario();
-
-        //deben de valodar los campos de entrada, para que no haya errores.
-        //por ejemplo
-        if(Objects.isNull(frmRegistro.getTxtNombreUser().getText()) || frmRegistro.getTxtNombreUser().getText().isEmpty()){
-            JOptionPane.showMessageDialog(null, "El campo nombre de usuario es requerido");
-            return;
+    public void mouseClicked(MouseEvent e) {
+        
+        if(e.getSource() == vista.btnRegUser){
+            modelo.setCorreoUsuario(vista.getTxtClave().getText());
+            modelo.setNombreUsuario(vista.getTxtNombreUser().getText());
+            modelo.setContrasenaUsuario(vista.getTxtClave().getText());
+            modelo.GuardarUsuario();
+            
+            //Muestro una alerta que el usuario se ha guardado
+            JOptionPane.showMessageDialog(vista, "Usuario Guardado");
         }
         
-        registroDao.registrarUsuario(
-                UUID.randomUUID().toString(), 
-                frmRegistro.getTxtNombreUser().getText(),
-                Integer.parseInt(frmRegistro.getTxtEdadU().getText()), 
-                frmRegistro.getTxtMail().getText(),
-                frmRegistro.getTxtClave().getText(),
-                "", 
-                2);
-
-        login lo = new login();
-        frmRegistro.dispose();
-        new LoginController(lo);
-
+         //Clic al botón de Ir Al Login
+        if(e.getSource() == vista.lblSesion){
+            vistaFrmLogin.initFrmLogin();
+            vistaFrmLogin.dispose();
+        }
+        
+        
+        
     }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+    }
+    
 }
