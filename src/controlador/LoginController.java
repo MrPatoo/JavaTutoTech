@@ -11,9 +11,11 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.JOptionPane;
+import modelo.Tutoria;
 import modelo.Usuario;
 import vista.frmMenuPrincipal;
 import vista.frmRegistro;
+import vista.jpAddTutoria;
 import vista.login;
 import vista.recuperacionClave;
 
@@ -63,7 +65,7 @@ public class LoginController implements MouseListener {
     @Override
     public void mouseClicked(MouseEvent e) {
         if (e.getSource() == vista.getjTxtMail()) {
-            vista.getjTxtPass().requestFocus();
+            vista.getjTxtMail().requestFocus();
         }
 
         if (e.getSource() == vista.getjTxtPass()) {
@@ -86,9 +88,8 @@ public class LoginController implements MouseListener {
                 usuarioModelo.setContrasena(clave);
 
                 if (usuarioModelo.validarCredenciales()) {
-                    frmMenuPrincipal form = new frmMenuPrincipal();
                     vista.dispose();
-                    new ctrlMenuPrincipal(form).abrirApp();
+                    new ctrlMenuPrincipal(new frmMenuPrincipal(), new jpAddTutoria(), new Tutoria());
                 } else {
                     JOptionPane.showMessageDialog(null, "Usuario o contraseña no valido");
                 }
@@ -98,22 +99,18 @@ public class LoginController implements MouseListener {
 
     @Override
     public void mousePressed(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
     public void mouseEntered(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
 }

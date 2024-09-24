@@ -5,6 +5,9 @@
 package vista;
 
 import controlador.ctrlMenuPrincipal;
+import javax.swing.JFrame;
+import javax.swing.JScrollPane;
+import modelo.CardTuto;
 import modelo.Tutoria;
 
 /**
@@ -29,12 +32,15 @@ public class frmMenuPrincipal extends javax.swing.JFrame {
         jpAddTutoria panel = new jpAddTutoria();
         Tutoria modelo = new Tutoria();
         //tienen que ir todos en orden
-        ctrlMenuPrincipal controlador = new ctrlMenuPrincipal(vista);
+        ctrlMenuPrincipal controlador = new ctrlMenuPrincipal(vista, panel, modelo);
         
         vista.setVisible(true);
       
         
     }
+    
+    
+
     
     
     
@@ -50,7 +56,7 @@ public class frmMenuPrincipal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
-        setPreferredSize(new java.awt.Dimension(1229, 780));
+        setPreferredSize(new java.awt.Dimension(1265, 830));
 
         jPanel1.setBackground(new java.awt.Color(37, 78, 97));
 
@@ -110,31 +116,21 @@ public class frmMenuPrincipal extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(frmMenuPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(frmMenuPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(frmMenuPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(frmMenuPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
+    
+       /* JFrame frame = new JFrame("jpContenedor");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(400, 600);
 
-        /* Create and display the form */
+        CardTuto tutoPanel = new CardTuto();
+        JScrollPane scrollPane = new JScrollPane(tutoPanel);
+        frame.add(scrollPane);
+
+        frame.setVisible(true);
+        */
+        
+        
+        
+        
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 initfrmMenuPrincipal();
