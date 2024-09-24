@@ -91,7 +91,7 @@ public class LoginController implements ActionListener {
         //if(true){
             frmMenuPrincipal form = new frmMenuPrincipal();
             vista.dispose();
-            new ctrlMenuPrincipal(form).abrirApp();
+            
         }else{
             JOptionPane.showMessageDialog(null, "Usuario o contraseña no valido");
         }

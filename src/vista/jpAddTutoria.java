@@ -25,7 +25,7 @@ public class jpAddTutoria extends javax.swing.JPanel {
         frmMenuPrincipal vista = new frmMenuPrincipal();
         Tutoria modelo = new Tutoria();
         
-        ctrlMenuPrincipal controlador = new ctrlMenuPrincipal(vista);
+        ctrlMenuPrincipal controlador = new ctrlMenuPrincipal(vista, Panel, modelo);
     }
     
     
