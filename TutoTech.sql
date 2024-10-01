@@ -24,7 +24,7 @@ eliminar_role('tutor');
 eliminar_role('tutorado');
 END;
 
-select * from tbROLE;
+select * from tbtutoria;
 drop table tbROLE;
 delete from tbROLE;
  
