@@ -21,11 +21,12 @@ public class jpAddTutoria extends javax.swing.JPanel {
     public jpAddTutoria() {
         initComponents();
         
-        //jpAddTutoria Panel = this;
-        //frmMenuPrincipal vista = new frmMenuPrincipal();
-        //Tutoria modelo = new Tutoria();
-        
-        //ctrlMenuPrincipal controlador = new ctrlMenuPrincipal(vista, Panel, modelo);
+        frmMenuPrincipal vista = new frmMenuPrincipal();
+        jpAddTutoria Panel = this;
+        Tutoria modelo = new Tutoria();
+        jpAddLeccion panelLec = new jpAddLeccion();
+        ctrlMenuPrincipal controlador = new ctrlMenuPrincipal(vista, Panel, modelo, panelLec);
+    
     }
     
     
@@ -44,10 +45,9 @@ public class jpAddTutoria extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        txtNombre = new javax.swing.JTextField();
         btnEliminar = new javax.swing.JButton();
         btnBuscarimg = new javax.swing.JButton();
-        txtDescripcion = new javax.swing.JTextField();
+        txtNombre = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jtbTutoria = new javax.swing.JTable();
@@ -56,27 +56,23 @@ public class jpAddTutoria extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         btnActualizar = new javax.swing.JButton();
-        btnLimpiar = new javax.swing.JButton();
+        txtDescripcion = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        txtNombre.setBorder(javax.swing.BorderFactory.createBevelBorder(0));
-        add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 100, 550, 40));
-
-
         btnEliminar.setBackground(new java.awt.Color(19, 82, 92));
         btnEliminar.setFont(new java.awt.Font("Dubai", 0, 18)); // NOI18N
         btnEliminar.setText("Eliminar");
-        add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 320, 120, 60));
+        add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 320, 120, 60));
 
         btnBuscarimg.setBackground(new java.awt.Color(19, 82, 92));
         btnBuscarimg.setFont(new java.awt.Font("Dubai", 0, 18)); // NOI18N
         btnBuscarimg.setText("Buscar");
         add(btnBuscarimg, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 260, 90, 30));
 
-        txtDescripcion.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        add(txtDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 170, 590, 40));
+        txtNombre.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 100, 590, 40));
 
         jLabel6.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jLabel6.setText("Descripción de la tutoría");
@@ -104,7 +100,7 @@ public class jpAddTutoria extends javax.swing.JPanel {
         btnAgregar.setBackground(new java.awt.Color(19, 82, 92));
         btnAgregar.setFont(new java.awt.Font("Dubai", 0, 18)); // NOI18N
         btnAgregar.setText("Agregar");
-        add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 320, 120, 60));
+        add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 320, 120, 60));
 
         jLabel5.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jLabel5.setText("Nombre de la tutoría");
@@ -118,12 +114,10 @@ public class jpAddTutoria extends javax.swing.JPanel {
         btnActualizar.setBackground(new java.awt.Color(19, 82, 92));
         btnActualizar.setFont(new java.awt.Font("Dubai", 0, 18)); // NOI18N
         btnActualizar.setText("Actualizar");
-        add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 320, 120, 60));
+        add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 320, 120, 60));
 
-        btnLimpiar.setBackground(new java.awt.Color(19, 82, 92));
-        btnLimpiar.setFont(new java.awt.Font("Dubai", 0, 18)); // NOI18N
-        btnLimpiar.setText("Limpiar");
-        add(btnLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 320, 120, 60));
+        txtDescripcion.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        add(txtDescripcion, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 170, 590, 40));
     }// </editor-fold>//GEN-END:initComponents
 
 
@@ -132,7 +126,6 @@ public class jpAddTutoria extends javax.swing.JPanel {
     public javax.swing.JButton btnAgregar;
     public javax.swing.JButton btnBuscarimg;
     public javax.swing.JButton btnEliminar;
-    public javax.swing.JButton btnLimpiar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;

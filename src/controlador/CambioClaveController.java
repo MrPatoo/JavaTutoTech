@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
 import modelo.CambioClave;
 import modelo.Usuario;
 import vista.frmCambioContrasenia;
-import vista.login;
+import vista.FrmLogin;
 
 /**
  *
@@ -135,8 +135,8 @@ public class CambioClaveController implements MouseListener {
 
             CambioClave cv = new CambioClave();
             Usuario u = new Usuario();
-            u.setCorreo(modelo.getCorreo());
-            u.setContrasena(cambioClave.getjTxtClave1().getText());
+            u.setCorreoUsuario(modelo.getCorreo());
+            u.setContrasenaUsuario(cambioClave.getjTxtClave1().getText());
             
             cv.setCodigo(modelo.getCodigo());
             cv.setCorreo(modelo.getCorreo());
@@ -146,9 +146,9 @@ public class CambioClaveController implements MouseListener {
 
             if (value > 0) {
                 JOptionPane.showMessageDialog(null, "Se ha actualizado la clave.");
-                login l = new login();
+                FrmLogin l = new FrmLogin();
                 this.cambioClave.dispose();
-                new LoginController(l);
+                new CtrlLogin(l);
             } else {
                 JOptionPane.showMessageDialog(null, "Ocurrio un error inesperado, intente mas tarde.");
             }
