@@ -5,6 +5,7 @@
 package vista;
 
 import controlador.ctrlMenuPrincipal;
+import modelo.Leccion;
 import modelo.Tutoria;
 
 
@@ -25,7 +26,8 @@ public class jpAddTutoria extends javax.swing.JPanel {
         jpAddTutoria Panel = this;
         Tutoria modelo = new Tutoria();
         jpAddLeccion panelLec = new jpAddLeccion();
-        ctrlMenuPrincipal controlador = new ctrlMenuPrincipal(vista, Panel, modelo, panelLec);
+        Leccion modeloLec = new Leccion();
+        ctrlMenuPrincipal controlador = new ctrlMenuPrincipal(vista, Panel, modelo, panelLec, modeloLec);
     
     }
     

@@ -7,6 +7,7 @@ package vista;
 import controlador.ctrlMenuPrincipal;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
+import modelo.Leccion;
 import modelo.Tutoria;
 
 /**
@@ -31,8 +32,9 @@ public class frmMenuPrincipal extends javax.swing.JFrame {
         jpAddTutoria panel = new jpAddTutoria();
         Tutoria modelo = new Tutoria();
         jpAddLeccion panelLec = new jpAddLeccion();
+        Leccion modeloLec = new Leccion();
         //tienen que ir todos en orden
-        ctrlMenuPrincipal controlador = new ctrlMenuPrincipal(vista, panel, modelo, panelLec);
+        ctrlMenuPrincipal controlador = new ctrlMenuPrincipal(vista, panel, modelo, panelLec, modeloLec);
         
         vista.setVisible(true);
       
