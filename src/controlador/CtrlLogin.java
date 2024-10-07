@@ -26,7 +26,8 @@ public class CtrlLogin implements MouseListener {
         if (e.getSource() == vista.jBtnInicia) {
 
             modelo.setCorreoUsuario(vista.getjTxtMail().getText());
-            modelo.setContrasenaUsuario(vista.getjTxtPass().getText());
+            modelo.setContrasenaUsuario(modelo.convertirSHA256(vista.jTxtPass.getText()));
+
             //Creo una variable llamada "comprobar" 
             //que guardará el resultado de ejecutar el metodo iniciarSesion()            
             boolean comprobar = modelo.iniciarSesion();

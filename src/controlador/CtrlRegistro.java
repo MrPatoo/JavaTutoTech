@@ -40,7 +40,7 @@ public class CtrlRegistro implements MouseListener{
         if(e.getSource() == vista.btnRegUser){
             modelo.setCorreoUsuario(vista.getTxtClave().getText());
             modelo.setNombreUsuario(vista.getTxtNombreUser().getText());
-            modelo.setContrasenaUsuario(vista.getTxtClave().getText());
+          modelo.setContrasenaUsuario(modelo.convertirSHA256(vista.txtClave.getText()));
             modelo.GuardarUsuario();
             
             //Muestro una alerta que el usuario se ha guardado
