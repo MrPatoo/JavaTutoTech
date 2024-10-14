@@ -49,8 +49,8 @@ public class CtrlRegistro implements MouseListener{
         
          //Clic al botón de Ir Al Login
         if(e.getSource() == vista.lblSesion){
-            vistaFrmLogin.initFrmLogin();
-            vistaFrmLogin.dispose();
+            FrmLogin.initFrmLogin();
+            vista.dispose();
         }
         
         
