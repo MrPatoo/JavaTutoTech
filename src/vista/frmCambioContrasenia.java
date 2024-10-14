@@ -4,9 +4,11 @@
  */
 package vista;
 
+import controlador.CambioClaveController;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import modelo.CambioClave;
 
 /**
  *
@@ -20,6 +22,8 @@ public class frmCambioContrasenia extends javax.swing.JFrame {
     public frmCambioContrasenia() {
         initComponents();
     }
+
+    
 
     /**
      * This method is called from within the constructor to initialize the form.

@@ -8,14 +8,14 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.*;
 import java.util.UUID;
+
 /**
  *
  * @author Steven
  */
 public class Usuario {
-    
-    
-     //1-Parametros
+
+    //1-Parametros
     private String idUsuario;
     private String nombreUsuario;
     private String edadUsuario;
@@ -61,7 +61,7 @@ public class Usuario {
     public void setContrasenaUsuario(String contrasenaUsuario) {
         this.contrasenaUsuario = contrasenaUsuario;
     }
-    
+
     public void GuardarUsuario() {
         //Creamos una variable igual a ejecutar el método de la clase de conexión
         Connection conexion = ClaseConexion.getConexion();
@@ -76,30 +76,30 @@ public class Usuario {
             addUsuario.setString(3, getEdadUsuario());
             addUsuario.setString(4, getCorreoUsuario());
             addUsuario.setString(5, contrasenaEncriptada);
- 
+
             //Ejecutar la consulta
             addUsuario.executeUpdate();
- 
+
         } catch (SQLException ex) {
             System.out.println("este es el error en el modelo:metodo guardar " + ex);
         }
     }
-        
-        //El método devuelve un valor booleano (verdadero o falso)
-       //Verdadero si existe el usuario y Falso si no existe
-       public boolean iniciarSesion() {
+
+    //El método devuelve un valor booleano (verdadero o falso)
+    //Verdadero si existe el usuario y Falso si no existe
+    public boolean iniciarSesion() {
         //Obtenemos la conexión a la base de datos
         Connection conexion = ClaseConexion.getConexion();
         boolean resultado = false;
         try {
             //Preparamos la consulta SQL para verificar el usuario
             String sql = "SELECT * FROM tbUsuario WHERE correoUsuario = ? AND contrasenaUsuario = ?";
-          
+
             PreparedStatement statement = conexion.prepareStatement(sql);
             String contrasenaEncriptada = convertirSHA256(getContrasenaUsuario());
 
             statement.setString(1, getCorreoUsuario());
-            
+
             statement.setString(2, contrasenaEncriptada);
             //Ejecutamos la consulta
             ResultSet resultSet = statement.executeQuery();
@@ -112,25 +112,65 @@ public class Usuario {
         }
         return resultado;
     }
-       
-       public String convertirSHA256(String password) {
-	MessageDigest md = null;
-	try {
-		md = MessageDigest.getInstance("SHA-256");
-	}
-	catch (NoSuchAlgorithmException e) {
-		System.out.println(e.toString());
-		return null;
-	}
-	byte[] hash = md.digest(password.getBytes());
-	StringBuffer sb = new StringBuffer();
- 
-	for(byte b : hash) {
-		sb.append(String.format("%02x", b));
-	}
- 
-	return sb.toString();
-}
- 
-       
+
+    public boolean validarUsuario() {
+        Connection con = ClaseConexion.getConexion();
+        try {
+            Statement st = con.createStatement();
+            String sql = "select * from tbUsuario where upper(correoUsuario) = '".concat(getCorreoUsuario()).concat("'");
+            ResultSet rs = st.executeQuery(sql);
+            return rs.next();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        } finally {
+            if (con != null) {
+                try {
+                    con.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+    public int actualizarClave() {
+        Connection con = ClaseConexion.getConexion();
+        try {
+            Statement st = con.createStatement();
+            String sql = "update tbUsuario set contrasenaUsuario = '".concat(getContrasenaUsuario())
+                    .concat("' where correoUsuario = '").concat(getCorreoUsuario()).concat("'");
+            return st.executeUpdate(sql);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return 0;
+        } finally {
+            if (con != null) {
+                try {
+                    con.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+    public String convertirSHA256(String password) {
+        MessageDigest md = null;
+        try {
+            md = MessageDigest.getInstance("SHA-256");
+        } catch (NoSuchAlgorithmException e) {
+            System.out.println(e.toString());
+            return null;
+        }
+        byte[] hash = md.digest(password.getBytes());
+        StringBuffer sb = new StringBuffer();
+
+        for (byte b : hash) {
+            sb.append(String.format("%02x", b));
+        }
+
+        return sb.toString();
+    }
+
 }

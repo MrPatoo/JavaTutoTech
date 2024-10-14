@@ -12,10 +12,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import modelo.Usuario;
 
-/**
- *
- * @author lenovo
- */
+
 public class FrmLogin extends javax.swing.JFrame {
 
     /**

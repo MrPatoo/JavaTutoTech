@@ -5,9 +5,13 @@
  */
 package vista;
 
+import controlador.CambioClaveController;
+import controlador.CtrlIngresoCorreo;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
+import modelo.CambioClave;
+import modelo.Usuario;
 
 /**
  *
@@ -20,6 +24,16 @@ public class recuperacionClave extends javax.swing.JFrame {
      */
     public recuperacionClave() {
         initComponents();
+    }
+
+    public static void initFrmRecuperaClave() {
+        Usuario modelo = new Usuario();
+        recuperacionClave vista = new recuperacionClave();
+        CtrlIngresoCorreo controlador = new CtrlIngresoCorreo(modelo, vista);
+
+        vista.setLocationRelativeTo(null);
+        vista.setVisible(true);
+        
     }
 
     /**
@@ -191,6 +205,5 @@ public class recuperacionClave extends javax.swing.JFrame {
     public void setjLblIniSesion(JLabel jLblIniSesion) {
         this.jLblIniSesion = jLblIniSesion;
     }
-
 
 }

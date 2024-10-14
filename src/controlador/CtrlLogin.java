@@ -1,5 +1,5 @@
-
 package controlador;
+
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.JOptionPane;
@@ -7,20 +7,23 @@ import modelo.Usuario;
 import vista.FrmLogin;
 import vista.frmMenuPrincipal;
 import vista.frmRegistro;
+import vista.recuperacionClave;
 
 public class CtrlLogin implements MouseListener {
-   
+
     Usuario modelo;
     FrmLogin vista;
-    
+
     //2-Constructor 
     public CtrlLogin(Usuario Modelo, FrmLogin Vista) {
         this.modelo = Modelo;
         this.vista = Vista;
-        
+
         vista.jBtnInicia.addMouseListener(this);
         vista.lblCrearCta.addMouseListener(this);
+        vista.lblRecupera.addMouseListener(this);
     }
+
     @Override
     public void mouseClicked(MouseEvent e) {
         if (e.getSource() == vista.jBtnInicia) {
@@ -34,18 +37,24 @@ public class CtrlLogin implements MouseListener {
 
             //Si la variable es "true" significa que si existe el usuario ingresado    
             if (comprobar == true) {
-                JOptionPane.showMessageDialog(vista,"Usuario existe, ¡Bienvenido!");
+                JOptionPane.showMessageDialog(vista, "Usuario existe, ¡Bienvenido!");
                 frmMenuPrincipal.initfrmMenuPrincipal();
             } else {
                 JOptionPane.showMessageDialog(vista, "Usuario no encontrado");
             }
         }
-        
+
         //Clic al botón de Ir Al Registro
-        if(e.getSource() == vista.getLblCrearCta()){
+        if (e.getSource() == vista.getLblCrearCta()) {
             frmRegistro.initfrmRegistro();
-             vista.dispose();
+            vista.dispose();
         }
+
+        if (e.getSource() == vista.getLblRecupera()) {
+            recuperacionClave.initFrmRecuperaClave();
+            vista.dispose();
+        }
+
     }
 
     @Override
@@ -63,9 +72,5 @@ public class CtrlLogin implements MouseListener {
     @Override
     public void mouseExited(MouseEvent e) {
     }
-    
-    
-
-    
 
 }

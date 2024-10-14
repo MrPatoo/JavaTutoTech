@@ -1,4 +1,4 @@
-/*
+                    /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
@@ -148,7 +148,7 @@ public class CambioClaveController implements MouseListener {
                 JOptionPane.showMessageDialog(null, "Se ha actualizado la clave.");
                 FrmLogin l = new FrmLogin();
                 this.cambioClave.dispose();
-                new CtrlLogin(l);
+                new CtrlLogin(new Usuario(), l);
             } else {
                 JOptionPane.showMessageDialog(null, "Ocurrio un error inesperado, intente mas tarde.");
             }

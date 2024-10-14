@@ -24,10 +24,9 @@ public class CtrlIngresoCorreo implements MouseListener {
 
     private String correo;
 
-    public CtrlIngresoCorreo(recuperacionClave vista) {
+    public CtrlIngresoCorreo(Usuario modelo, recuperacionClave vista) {
         this.vista = vista;
-        vista.setLocationRelativeTo(null);
-        vista.setVisible(true);
+        this.modelo = modelo;
         addListener();
     }
 
@@ -65,9 +64,8 @@ public class CtrlIngresoCorreo implements MouseListener {
         vista.getjLblIniSesion().addMouseListener(new MouseAdapter() {
 
             public void mouseClicked(MouseEvent e) {
-                FrmLogin login = new FrmLogin();
+                FrmLogin.initFrmLogin();
                 vista.dispose();
-                new CtrlLogin(login);
             }
         });
     }
@@ -83,7 +81,7 @@ public class CtrlIngresoCorreo implements MouseListener {
 
         Usuario ld = new Usuario();
         CambioClave cc = new CambioClave();
-        ld.setCorreo(correo.toUpperCase());
+        ld.setCorreoUsuario(correo.toUpperCase());
 
         if(!ld.validarUsuario()){
             JOptionPane.showMessageDialog(null, "El correo no existe en nuestros registros");
