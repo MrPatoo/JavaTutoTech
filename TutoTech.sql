@@ -1,6 +1,6 @@
 --TABLA ROLE--------------------------------------------------------------------------------------------------------------------------------------------------
 CREATE TABLE tbROLE (
-idRole NUMBER GENERATED AS IDENTITY START WITH 1 INCREMENT BY 1 PRIMARY KEY, -- Aquï¿½ se incluye el auto-incremento
+idRole NUMBER GENERATED AS IDENTITY START WITH 1 INCREMENT BY 1 PRIMARY KEY, -- Aquí se incluye el auto-incremento
 nombreRole VARCHAR2(25) CHECK (nombreRole IN ('admin', 'tutor', 'tutorado'))
 );
 
@@ -17,14 +17,14 @@ BEGIN
 DELETE FROM tbROLE WHERE nombreRole = p_nombreRole;
 END;
 
--- Eliminaciï¿½n de datos en la tabla tbROLE
+-- Eliminación de datos en la tabla tbROLE
 BEGIN
 eliminar_role('admin');
 eliminar_role('tutor');
 eliminar_role('tutorado');
 END;
 
-select * from tbtutoria;
+select * from tbROLE;
 drop table tbROLE;
 delete from tbROLE;
  
@@ -35,7 +35,7 @@ nombreUsuario VARCHAR2(15) NOT NULL,
 edadUsuario INT NOT NULL,
 correoUsuario VARCHAR2(200) NOT NULL UNIQUE,
 contrasenaUsuario VARCHAR2(100) NOT NULL,
-idRole NUMBER,
+idRole NUMBER NOT NULL,
  
 CONSTRAINT FK_Role FOREIGN KEY (idRole) REFERENCES tbROLE(idRole)
 );
@@ -52,7 +52,7 @@ VALUES ('4R^t1U%v', 'rafa-vargas', 19, '20230402@ricaldone.edu.sv', 'fanta457', 
 INSERT INTO tbUsuario (idUsuario, nombreUsuario, edadUsuario, correoUsuario, contrasenaUsuario, idRole) 
 VALUES ('j6!H3s#P', 'steveen07__', 18, '20220721@ricaldone.edu.sv', 'bdtiendamusica', 3);
 
---Comando para iniciar sesiï¿½n en la aplicaciï¿½n de Java o Android (Solo ejecutar si se va a testear)
+--Comando para iniciar sesión en la aplicación de Java o Android (Solo ejecutar si se va a testear)
 update tbUsuario set contrasenaUsuario = 'fe3a646a168c88a7ad70522485aed3c74d0cb7223bf5a5274d26c8a09f743e7b' where correoUsuario = '20220721@ricaldone.edu.sv';
 commit;
 
@@ -90,15 +90,17 @@ CONSTRAINT FK_Usuario FOREIGN KEY (idUsuario) REFERENCES tbUsuario(idUsuario) ON
 
 -- Inserciones a la tabla tbTutoria
 INSERT INTO tbTutoria (idTutoria, nombreTutoria, descripcionTutoria, imagenTutoria, idUsuario)
-VALUES ('fB7#xY1!', 'Tutoria de Matematicas', 'En esta tutoria aprenderas sobre algebra', SYSGUID(), 'aB3#xY9!');
+VALUES ('fB7#xY1!', 'Tutoria de Matematicas', 'En esta tutoria aprenderas sobre algebra', null, 'aB3#xY9!');
 INSERT INTO tbTutoria (idTutoria, nombreTutoria, descripcionTutoria, imagenTutoria, idUsuario)
-VALUES ('9z@Q8w$L', 'Tutoria de Fisica', 'En esta tutoria aprenderas sobre conceptos basicos de la fisica', SYSGUID(), '7z@Q2w$L');
+VALUES ('9z@Q8w$L', 'Tutoria de Fisica', 'En esta tutoria aprenderas sobre conceptos basicos de la fisica', null, '7z@Q2w$L');
 INSERT INTO tbTutoria (idTutoria, nombreTutoria, descripcionTutoria, imagenTutoria, idUsuario)
-VALUES ('d6!H2s#P', 'Tutoria de Quimica', 'En esta tutoria aprenderas sobre conceptos basicos de la quimica', SYSGUID(), 'mN8*5p&Z');
+VALUES ('d6!H2s#P', 'Tutoria de Quimica', 'En esta tutoria aprenderas sobre conceptos basicos de la quimica', null, 'mN8*5p&Z');
 INSERT INTO tbTutoria (idTutoria, nombreTutoria, descripcionTutoria, imagenTutoria, idUsuario)
-VALUES ('8R^t4U%v', 'Tutoria de Historia', 'En esta tutoria aprenderas sobre periodos de tiempo', SYSGUID(), '4R^t1U%v');
+VALUES ('8R^t4U%v', 'Tutoria de Historia', 'En esta tutoria aprenderas sobre periodos de tiempo', null, '4R^t1U%v');
 INSERT INTO tbTutoria (idTutoria, nombreTutoria, descripcionTutoria, imagenTutoria, idUsuario)
-VALUES ('nN6*3p&K', 'Tutoria de Literatura', 'En esta tutoria aprenderas sobre conceptos obras literarias', SYSGUID(), 'j6!H3s#P');
+VALUES ('nN6*3p&K', 'Tutoria de Literatura', 'En esta tutoria aprenderas sobre conceptos obras literarias', null, 'j6!H3s#P');
+
+UPDATE tbTutoria SET imagenTutoria = SYS_GUID();
 
 --Procedimiento almacenado para eliminar datos en tbTutoria
 CREATE OR REPLACE PROCEDURE eliminar_tutoria (
@@ -120,16 +122,15 @@ END;
 select * from tbTutoria;
 drop table tbTutoria;
 delete from tbTutoria;
-
 --TABLA LECCION------------------------------------------------------------------------------------------------------------------------------------------------ 
 CREATE TABLE tbLeccion (
 idLeccion VARCHAR2(100) PRIMARY KEY,
 tituloLeccion VARCHAR2(100) NOT NULL,
-fechaLeccion Varchar2(100) NOT NULL,
+fechaLeccion DATE NOT NULL,
 contenidoLeccion VARCHAR2(2000) NOT NULL,
 statusLeccion NUMBER(1) NOT NULL  CHECK (statusLeccion IN (0,1)),
-idTutoria VARCHAR2(100)  ,
-idUsuario VARCHAR2(100)  ,
+idTutoria VARCHAR2(100) NOT NULL,
+idUsuario VARCHAR2(100) NOT NULL,
  
 CONSTRAINT FK_Tutoria FOREIGN KEY (idTutoria) REFERENCES tbTutoria(idTutoria),
 CONSTRAINT FK_Usuario2 FOREIGN KEY (idUsuario) REFERENCES tbUsuario(idUsuario) ON DELETE CASCADE
@@ -206,28 +207,28 @@ delete from tbAuditoria;
 CREATE OR REPLACE TRIGGER trigTUTOINS AFTER INSERT ON tbTutoria FOR EACH ROW
 BEGIN
     INSERT INTO tbAuditoria (tipoAccion, tablaAfectada, idRegistroAfectado, idUsuario, descripcionAccion)
-    VALUES ('INSERT', 'tbTutoria', :NEW.idTutoria, :NEW.idUsuario, 'Inserciï¿½n de una nueva tutorï¿½a');
+    VALUES ('INSERT', 'tbTutoria', :NEW.idTutoria, :NEW.idUsuario, 'Inserción de una nueva tutoría');
 END;
 
 --Este trigger se dispara despues de una eliminacion en la tabla tbTutoria y registra la informacion anterior en la tabla tbAuditoria.
 CREATE OR REPLACE TRIGGER trigTUTODEL AFTER DELETE ON tbTutoria FOR EACH ROW
 BEGIN
     INSERT INTO tbAuditoria (tipoAccion, tablaAfectada, idRegistroAfectado, idUsuario, descripcionAccion)
-    VALUES ('DELETE', 'tbTutoria', :OLD.idTutoria, :OLD.idUsuario, 'Eliminaciï¿½n de una tutoria');
+    VALUES ('DELETE', 'tbTutoria', :OLD.idTutoria, :OLD.idUsuario, 'Eliminación de una tutoria');
 END;
 
 --Este trigger se dispara despues de una insercion en la tabla tbLeccion y registra la nueva informacion en la tabla tbAuditoria.
-CREATE OR REPLACE TRIGGER trigLECINS AFTER INSERT ON tbTutoria FOR EACH ROW
+CREATE OR REPLACE TRIGGER trigLECINS AFTER INSERT ON tbLeccion FOR EACH ROW
 BEGIN
     INSERT INTO tbAuditoria (tipoAccion, tablaAfectada, idRegistroAfectado, idUsuario, descripcionAccion)
-    VALUES ('INSERT', 'tbLeccion', :NEW.idLeccion, :NEW.idUsuario, 'Inserciï¿½n de una nueva leccion');
+    VALUES ('INSERT', 'tbLeccion', :NEW.idLeccion, :NEW.idUsuario, 'Inserción de una nueva leccion');
 END;
 
 --Este trigger se dispara despues de una eliminacion en la tabla tbLeccion y registra la nueva informacion en la tabla tbAuditoria.
-CREATE OR REPLACE TRIGGER trigLECDEL AFTER INSERT ON tbTutoria FOR EACH ROW
+CREATE OR REPLACE TRIGGER trigLECDEL AFTER INSERT ON tbLeccion FOR EACH ROW
 BEGIN
     INSERT INTO tbAuditoria (tipoAccion, tablaAfectada, idRegistroAfectado, idUsuario, descripcionAccion)
-    VALUES ('DELETE', 'tbLeccion', :NEW.idLeccion, :NEW.idUsuario, 'Eliminaciï¿½n de una leccion');
+    VALUES ('DELETE', 'tbLeccion', :NEW.idLeccion, :NEW.idUsuario, 'Eliminación de una leccion');
 END;
 
 --Union de las tablas tbUsuario y tbTutoria en una sola tabla donde el idRole representa a los tutores
