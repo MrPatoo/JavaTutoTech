@@ -1,53 +1,34 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package vista;
 
 import controlador.ctrlMenuPrincipal;
-import javax.swing.JFrame;
-import javax.swing.JScrollPane;
+import java.awt.CardLayout;
+import javax.swing.JPanel;
 import modelo.Leccion;
 import modelo.Tutoria;
 
-/**
- *
- * @author USUARIO
- */
 public class frmMenuPrincipal extends javax.swing.JFrame {
-
-    /**
-     * Creates new form frmLecciones
-     */
+    
     public frmMenuPrincipal() {
         initComponents();
-        this.setLocationRelativeTo(this);
-
+        this.setLocationRelativeTo(this);  // Centra la ventana
     }
 
-    
-    
     public static void initfrmMenuPrincipal(){
         frmMenuPrincipal vista = new frmMenuPrincipal();
-        jpAddTutoria panel = new jpAddTutoria();
-        Tutoria modelo = new Tutoria();
-        jpAddLeccion panelLec = new jpAddLeccion();
-        Leccion modeloLec = new Leccion();
-        //tienen que ir todos en orden
-        ctrlMenuPrincipal controlador = new ctrlMenuPrincipal(vista, panel, modelo, panelLec, modeloLec);
+        
+        // Paneles y modelos
+        jpAddTutoria panelTutoria = new jpAddTutoria();
+        Tutoria modeloTutoria = new Tutoria();
+        
+        jpAddLeccion panelLeccion = new jpAddLeccion();
+        Leccion modeloLeccion = new Leccion();
+        
+        // Controlador
+        ctrlMenuPrincipal controlador = new ctrlMenuPrincipal(vista, panelTutoria, modeloTutoria, panelLeccion, modeloLeccion);
         
         vista.setVisible(true);
-      
-        
     }
-    
-    
-
-    
-    
-    
-    
-    @SuppressWarnings("unchecked")
+@SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -122,20 +103,13 @@ public class frmMenuPrincipal extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-    
- 
-        java.awt.EventQueue.invokeLater(new Runnable() {
+public static void main(String args[]) {
+       java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 initfrmMenuPrincipal();
             }
         });
     }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnIrLeccion;
     public javax.swing.JButton btnIrTutoria;

@@ -126,27 +126,27 @@ delete from tbTutoria;
 CREATE TABLE tbLeccion (
 idLeccion VARCHAR2(100) PRIMARY KEY,
 tituloLeccion VARCHAR2(100) NOT NULL,
-fechaLeccion DATE NOT NULL,
+fechaLeccion VARCHAR2(100) NOT NULL,
 contenidoLeccion VARCHAR2(2000) NOT NULL,
-statusLeccion NUMBER(1) NOT NULL  CHECK (statusLeccion IN (0,1)),
-idTutoria VARCHAR2(100) NOT NULL,
-idUsuario VARCHAR2(100) NOT NULL,
+statusLeccion NUMBER(1) NOT NULL  CHECK (statusLeccion IN (1,2)),
+idTutoria VARCHAR2(100),
+idUsuario VARCHAR2(100),
  
 CONSTRAINT FK_Tutoria FOREIGN KEY (idTutoria) REFERENCES tbTutoria(idTutoria),
-CONSTRAINT FK_Usuario2 FOREIGN KEY (idUsuario) REFERENCES tbUsuario(idUsuario) ON DELETE CASCADE
+CONSTRAINT FK_Usuario2 FOREIGN KEY (idUsuario) REFERENCES tbUsuario(idUsuario)
 );
  
 --Inserciones a la tabla tbLeccion
 INSERT INTO tbLeccion (idLeccion, tituloLeccion, fechaLeccion, contenidoLeccion, statusLeccion, idTutoria, idUsuario)
-VALUES ('0123456789', 'Introduccion a Matematicas', TO_DATE('2024-07-01', 'YYYY-MM-DD'), 'Contenido de la leccion de introduccion a matematicas.', 1, 'fB7#xY1!', 'aB3#xY9!');
+VALUES ('0123456789', 'Introduccion a Matematicas', '2024-07-01', 'Contenido de la leccion de introduccion a matematicas.', 1, 'fB7#xY1!', 'aB3#xY9!');
 INSERT INTO tbLeccion (idLeccion, tituloLeccion, fechaLeccion, contenidoLeccion, statusLeccion, idTutoria, idUsuario)
-VALUES ('H#23I@', 'Fisica Basica', TO_DATE('2024-07-02', 'YYYY-MM-DD'), 'Contenido de la leccion de fisica basica.', 1, '9z@Q8w$L', '7z@Q2w$L');
+VALUES ('H#23I@', 'Fisica Basica', '2024-07-02', 'Contenido de la leccion de fisica basica.', 1, '9z@Q8w$L', '7z@Q2w$L');
 INSERT INTO tbLeccion (idLeccion, tituloLeccion, fechaLeccion, contenidoLeccion, statusLeccion, idTutoria, idUsuario)
-VALUES ('F*01G$', 'Quimica Organica', TO_DATE('2024-07-03', 'YYYY-MM-DD'), 'Contenido de la leccion de quimica organica.', 1, 'd6!H2s#P', 'mN8*5p&Z');
+VALUES ('F*01G$', 'Quimica Organica', '2024-07-03', 'Contenido de la leccion de quimica organica.', 1, 'd6!H2s#P', 'mN8*5p&Z');
 INSERT INTO tbLeccion (idLeccion, tituloLeccion, fechaLeccion, contenidoLeccion, statusLeccion, idTutoria, idUsuario)
-VALUES ('D@89E&', 'Historia Mundial', TO_DATE('2024-07-04', 'YYYY-MM-DD'), 'Contenido de la leccion de historia mundial.', 1, '8R^t4U%v', '4R^t1U%v');
+VALUES ('D@89E&', 'Historia Mundial', '2024-07-04', 'Contenido de la leccion de historia mundial.', 1, '8R^t4U%v', '4R^t1U%v');
 INSERT INTO tbLeccion (idLeccion, tituloLeccion, fechaLeccion, contenidoLeccion, statusLeccion, idTutoria, idUsuario)
-VALUES ('B%67C*', 'Literatura Clasica', TO_DATE('2024-07-05', 'YYYY-MM-DD'), 'Contenido de la leccion de literatura clasica.', 1, 'nN6*3p&K', 'j6!H3s#P');
+VALUES ('B%67C*', 'Literatura Clasica', '2024-07-05', 'Contenido de la leccion de literatura clasica.', 1, 'nN6*3p&K', 'j6!H3s#P');
 
 --Procedimiento almacenado para eliminar datos en la tabla tbLeccion
 CREATE OR REPLACE PROCEDURE eliminar_leccion (

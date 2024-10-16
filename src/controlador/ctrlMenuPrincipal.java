@@ -1,168 +1,120 @@
 package controlador;
 
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
-import modelo.Tutoria;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import modelo.Tutoria;
 import modelo.Leccion;
 import vista.frmMenuPrincipal;
 import vista.jpAddLeccion;
 import vista.jpAddTutoria;
 
 public class ctrlMenuPrincipal implements MouseListener {
-
-    //mandar a llamar las capas
+    
     private frmMenuPrincipal vista;
-    private jpAddTutoria panel;
-    private Tutoria modelo;
-    private jpAddLeccion panelLec;
-    private Leccion modeloLec;
+    private jpAddTutoria panelTutoria;
+    private Tutoria modeloTutoria;
+    private jpAddLeccion panelLeccion;
+    private Leccion modeloLeccion;
 
-    public ctrlMenuPrincipal(frmMenuPrincipal Vista, jpAddTutoria Panel, Tutoria Modelo, jpAddLeccion PanelLec, Leccion ModeloLec) {
-        this.vista = Vista;
-        this.panel = Panel;
-        this.modelo = Modelo;
-        this.panelLec = PanelLec;
-        this.modeloLec = ModeloLec;
+    // Constructor del controlador
+    public ctrlMenuPrincipal(frmMenuPrincipal vista, jpAddTutoria panelTutoria, Tutoria modeloTutoria, jpAddLeccion panelLeccion, Leccion modeloLeccion) {
+        this.vista = vista;
+        this.panelTutoria = panelTutoria;
+        this.modeloTutoria = modeloTutoria;
+        this.panelLeccion = panelLeccion;
+        this.modeloLeccion = modeloLeccion;
         
-      
-        //panel tutoria--------------------------------
+        // Asignar eventos a los botones del frmMenuPrincipal
         vista.btnIrTutoria.addMouseListener(this);
-        modelo.Mostrar(panel.jtbTutoria);
-        panel.btnAgregar.addMouseListener(this);
-        panel.btnEliminar.addMouseListener(this);
-        panel.btnActualizar.addMouseListener(this);
-        
-        //panel leccion--------------------------------
         vista.btnIrLeccion.addMouseListener(this);
         
+        // Asignar eventos CRUD en los paneles
+        panelTutoria.btnAgregar.addMouseListener(this);
+        panelTutoria.btnEliminar.addMouseListener(this);
+        panelTutoria.btnActualizar.addMouseListener(this);
+        panelLeccion.btnAgregarLec.addMouseListener(this);
+        panelLeccion.btnEliminarLec.addMouseListener(this);
+        panelLeccion.btnActualizarLec.addMouseListener(this);
         
+        // Inicializar la vista mostrando el panel de Tutoria
+        mostrarPanelTutoria();
     }
-
     @Override
     public void mouseClicked(MouseEvent e) {
-        //para que se vean los paneles***************************************************************************************************
+        //Navegar entre paneles
         if (e.getSource() == vista.btnIrTutoria) {
-            System.out.println("se dio clic al boton ir a tutoria");
-            jpAddTutoria objAddTuto = new jpAddTutoria();
-
-            vista.jpContenedor.removeAll();
-            vista.jpContenedor.add(objAddTuto);
-            vista.jpContenedor.revalidate();
-            vista.jpContenedor.repaint();
-
+            mostrarPanelTutoria();
+        }    
+        if (e.getSource() == vista.btnIrLeccion) {
+            mostrarPanelLeccion();
         }
         
-        if(e.getSource() == vista.btnIrLeccion){
-            jpAddLeccion objAddLec = new jpAddLeccion();
-            
-            vista.jpContenedor.removeAll();
-            vista.jpContenedor.add(objAddLec);
-            vista.jpContenedor.revalidate();
-            vista.jpContenedor.repaint();
-        }           
-            
-        
-        
-        //Botones de crud Tutoria************************************************************************************************************
-        if (e.getSource() == panel.btnAgregar) {
-            modelo.setNombreTutoria(panel.txtNombre.getText());
-            modelo.setDescripcionTutoria(panel.txtDescripcion.getText());
-            modelo.LimpiarDatos(panel);
-          
-            modelo.GuardarTuto();
-              modelo.Mostrar(panel.jtbTutoria);
-            System.out.println("Funciona");
-
+        // CRUD en panel de Tutoria
+        if (e.getSource() == panelTutoria.btnAgregar) {
+            modeloTutoria.setNombreTutoria(panelTutoria.txtNombre.getText());
+            modeloTutoria.setDescripcionTutoria(panelTutoria.txtBuscar.getText());
+            modeloTutoria.LimpiarDatos(panelTutoria);
+            modeloTutoria.GuardarTuto();
+            modeloTutoria.Mostrar(panelTutoria.jtbTutoria);
+            System.out.println("Tutoria agregada");
+        } else if (e.getSource() == panelTutoria.btnEliminar) {
+            modeloTutoria.Eliminar(panelTutoria.jtbTutoria);
+            modeloTutoria.Mostrar(panelTutoria.jtbTutoria);
+            System.out.println("Tutoria eliminada");
+        } else if (e.getSource() == panelTutoria.btnActualizar) {
+            modeloTutoria.setNombreTutoria(panelTutoria.txtNombre.getText());
+            modeloTutoria.setDescripcionTutoria(panelTutoria.txtNombre.getText());
+            modeloTutoria.Actualizar(panelTutoria.jtbTutoria);
+            modeloTutoria.Mostrar(panelTutoria.jtbTutoria);
+            System.out.println("Tutoria actualizada");
         }
-
-        if (e.getSource() == panel.btnEliminar) {
-            modelo.Eliminar(panel.jtbTutoria);
-            modelo.Mostrar(panel.jtbTutoria);
-            System.out.println("Funciona");
-
+        // CRUD en panel de Lección
+        if (e.getSource() == panelLeccion.btnAgregarLec) {
+            modeloLeccion.setTituloLec(panelLeccion.txtTituloLec.getText());
+            modeloLeccion.setFechaLec(panelLeccion.txtFechaLec.getText());
+            modeloLeccion.setContenidoLec(panelLeccion.txtContenidoLec.getText());
+            modeloLeccion.setStatusLec(Integer.parseInt(panelLeccion.txtStatusLec.getText()));
+            modeloLeccion.LimpiarDatosLec(panelLeccion);
+            modeloLeccion.GuardarLec();
+            modeloLeccion.MostrarLec(panelLeccion.jtbLeccion);
+            System.out.println("Lección agregada");
+        } else if (e.getSource() == panelLeccion.btnEliminarLec) {
+            modeloLeccion.EliminarLec(panelLeccion.jtbLeccion);
+            modeloLeccion.MostrarLec(panelLeccion.jtbLeccion);
+            System.out.println("Lección eliminada");
+        } else if (e.getSource() == panelLeccion.btnActualizarLec) {
+            modeloLeccion.setTituloLec(panelLeccion.txtTituloLec.getText());
+            modeloLeccion.setFechaLec(panelLeccion.txtFechaLec.getText());
+            modeloLeccion.setContenidoLec(panelLeccion.txtContenidoLec.getText());
+            modeloLeccion.setStatusLec(Integer.parseInt(panelLeccion.txtStatusLec.getText()));
+            modeloLeccion.ActualizarLec(panelLeccion.jtbLeccion);
+            modeloLeccion.MostrarLec(panelLeccion.jtbLeccion);
+            System.out.println("Lección actualizada");
         }
-
-        if (e.getSource() == panel.btnActualizar) {
-            modelo.setNombreTutoria(panel.txtNombre.getText());
-            modelo.setDescripcionTutoria(panel.txtNombre.getText());
-
-            modelo.Actualizar(panel.jtbTutoria);
-            modelo.Mostrar(panel.jtbTutoria);
-                        System.out.println("Funciona");
-
-        }
-
-        /*if (e.getSource() == panel.btnLimpiar) {
-            modelo.LimpiarDatos(panel);
-        }*/
-
-        //validaciones
-        /*]if (panel.txtNombre.getText().isEmpty() || panel.txtDescripcion.getText().isEmpty()) {
-            //esto es un alert
-            JOptionPane.showMessageDialog(vista, "Llene todos los campos");
-        }*/
-        
-        
-        
-        //Botones de crud Leccion*******************************************************************************************************************
-        
-        
-        if(e.getSource()== panelLec.btnAgregarLec){
-            modeloLec.setTituloLec(panelLec.txtTituloLec.getText());
-            modeloLec.setFechaLec(panelLec.txtFechaLec.getText());
-            modeloLec.setContenidoLec(panelLec.txtContenidoLec.getText());
-            modeloLec.LimpiarDatosLec(panelLec);
-          
-            modeloLec.GuardarLec();
-            modeloLec.MostrarLec(panelLec.jtbLeccion);
-            System.out.println("Funciona"); 
-        }
-        
-        
-        if (e.getSource() == panelLec.btnEliminarLec) {
-            modeloLec.EliminarLec(panelLec.jtbLeccion);
-            modeloLec.MostrarLec(panelLec.jtbLeccion);
-            System.out.println("Funciona");
-
-        }
-
-        if (e.getSource() == panelLec.btnActualizarLec) {
-            modeloLec.setTituloLec(panelLec.txtTituloLec.getText());
-            modeloLec.setFechaLec(panelLec.txtFechaLec.getText());
-            modeloLec.setContenidoLec(panelLec.txtContenidoLec.getText());
-
-
-            modeloLec.ActualizarLec(panelLec.jtbLeccion);
-            modeloLec.MostrarLec(panelLec.jtbLeccion);
-                        System.out.println("Funciona");
-
-        }
-        
-        
-        
-        
-        
-        
+    }
+    // Método para mostrar el panel de Tutoria en jpContenedor
+    private void mostrarPanelTutoria() {
+        vista.jpContenedor.removeAll();  // Eliminar contenido previo
+        vista.jpContenedor.add(panelTutoria);  // Agregar el panel de Tutoria
+        vista.jpContenedor.revalidate();  // Validar cambios
+        vista.jpContenedor.repaint();  // Repintar el contenedor
+        modeloTutoria.Mostrar(panelTutoria.jtbTutoria);  // Cargar datos del modelo
     }
 
+    // Método para mostrar el panel de Lección en jpContenedor
+    private void mostrarPanelLeccion() {
+        vista.jpContenedor.removeAll();  // Eliminar contenido previo
+        vista.jpContenedor.add(panelLeccion);  // Agregar el panel de Lección
+        vista.jpContenedor.revalidate();  // Validar cambios
+        vista.jpContenedor.repaint();  // Repintar el contenedor
+        modeloLeccion.MostrarLec(panelLeccion.jtbLeccion);  // Cargar datos del modelo
+    }
     @Override
-    public void mousePressed(MouseEvent e) {
-    }
-
+    public void mousePressed(MouseEvent e) {}
     @Override
-    public void mouseReleased(MouseEvent e) {
-    }
-
+    public void mouseReleased(MouseEvent e) {}
     @Override
-    public void mouseEntered(MouseEvent e) {
-    }
-
+    public void mouseEntered(MouseEvent e) {}
     @Override
-    public void mouseExited(MouseEvent e) {
-    }
-
+    public void mouseExited(MouseEvent e) {}
 }

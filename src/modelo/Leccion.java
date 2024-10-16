@@ -1,10 +1,13 @@
 package modelo;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
+import java.text.ParseException;
 import java.util.UUID;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -21,39 +24,28 @@ public class Leccion {
     public String getTituloLec() {
         return tituloLec;
     }
-
     public void setTituloLec(String tituloLec) {
         this.tituloLec = tituloLec;
     }
-
     public String getFechaLec() {
         return fechaLec;
     }
-
     public void setFechaLec(String fechaLec) {
         this.fechaLec = fechaLec;
     }
-
     public String getContenidoLec() {
         return contenidoLec;
     }
-
     public void setContenidoLec(String contenidoLec) {
         this.contenidoLec = contenidoLec;
     }
-
     public int getStatusLec() {
         return statusLec;
     }
-
     public void setStatusLec(int statusLec) {
         this.statusLec = statusLec;
     }
-    
-    
-    
     //METODOS************************************************
-    
     //guardar----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     public void GuardarLec() {
         //Creamos una variable igual a ejecutar el método de la clase de conexión
@@ -66,26 +58,20 @@ public class Leccion {
             addLec.setString(2, getTituloLec());
             addLec.setString(3, getFechaLec());
             addLec.setString(4, getContenidoLec());
-            addLec.setInt(5, 0);
- 
+            addLec.setInt(5, getStatusLec());
             //Ejecutar la consulta
             addLec.executeUpdate();
  
         } catch (SQLException ex) {
             System.out.println("este es el error en el modelo:metodo guardar " + ex);
-        }
-    
+        }   
     }
-    
     //mostrar---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     public void MostrarLec(JTable tabla){
-    //conexion
+        //conexion
         Connection conexion = ClaseConexion.getConexion();
-        
-        DefaultTableModel modeloDeDatos = new DefaultTableModel();
-        
-        
-          modeloDeDatos.setColumnIdentifiers(new Object[]{"idLeccion", "tituloLeccion", "fechaLeccion", "contenidoLeccion", "statusLeccion", "idTutoria", "idUsuario"});
+        DefaultTableModel modeloDeDatos = new DefaultTableModel();  
+          modeloDeDatos.setColumnIdentifiers(new Object[]{"idLeccion", "tituloLeccion", "fechaLeccion", "contenidoLeccion", "statusLeccion"});
         try {
             //Creamos un Statement
             Statement statement = conexion.createStatement();
@@ -99,9 +85,7 @@ public class Leccion {
                     rs.getString("tituloLeccion"), 
                     rs.getString("fechaLeccion"), 
                     rs.getString("contenidoLeccion"),
-                    rs.getInt("statusLeccion"),
-                    rs.getString("idTutoria"),
-                    rs.getString("idUsuario")                
+                    rs.getInt("statusLeccion")    
                 });         
             }
             //Asignamos el nuevo modelo lleno a la tabla
@@ -109,31 +93,23 @@ public class Leccion {
         } catch (Exception e) {
             System.out.println("Este es el error en el modelo, metodo mostrar " + e);
         }
-    }
-
-    
-    
+    }    
     //eliminar----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     public void EliminarLec(JTable tabla){
-        
-        Connection conexion = ClaseConexion.getConexion();
-        
+        Connection conexion = ClaseConexion.getConexion();    
         int filaSeleccionada = tabla.getSelectedRow();
-        String miId = tabla.getValueAt(filaSeleccionada, 0).toString();
-         
+        String miId = tabla.getValueAt(filaSeleccionada, 0).toString();        
         //borramos
         try{
             PreparedStatement deleteLec = conexion.prepareStatement("delete from tbLeccion where idLeccion = ?");
             
             deleteLec.setString(1, miId);
-            deleteLec.executeUpdate();
-            
+            deleteLec.executeUpdate();           
         }
         catch(Exception e){
             System.out.println("error en metodo eliminar: " + e);
         }
-    }
-    
+    }    
     //cargar----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     public void cargarDatosTablaLec(jpAddLeccion vista) {
         // Obtén la fila seleccionada 
@@ -145,18 +121,14 @@ public class Leccion {
             String fechaTb = vista.jtbLeccion.getValueAt(filaSeleccionada, 1).toString();
             String contenidoTb = vista.jtbLeccion.getValueAt(filaSeleccionada, 2).toString();
            
-
             // Establece los valores en los campos de texto
             vista.txtTituloLec.setText(tituloTb);
             vista.txtFechaLec.setText(fechaTb);
-            vista.txtContenidoLec.setText(contenidoTb);
+            vista.txtBuscarLec.setText(contenidoTb);
         }
-    }
-    
-    
+    }      
     //actualizar--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-    public void ActualizarLec(JTable tabla){
-        
+    public void ActualizarLec(JTable tabla){       
         Connection conexion = ClaseConexion.getConexion();
         
          int filaSeleccionada = tabla.getSelectedRow();
@@ -172,40 +144,37 @@ public class Leccion {
                 String tituloLecAnterior = "";
                 String fechaLecAnterior = "";
                 String contenidoLecAnterior = "";
+                int statusLecAnterior = 0;
 
                 if (rs.next()) {
                     tituloLecAnterior = rs.getString("tituloLeccion");
                     fechaLecAnterior = rs.getString("fechaLeccion");
                     contenidoLecAnterior = rs.getString("fechaLeccion");
+                    statusLecAnterior = rs.getInt("statusLeccion");
                 }
-
                 //Ejecutamos la Query de actualización
-                PreparedStatement updateUser = conexion.prepareStatement("UPDATE tbLeccion SET tituloLeccion = ?, fechaLeccion = ?, contenidoLeccion = ? WHERE idLeccion = ?");
+                PreparedStatement updateUser = conexion.prepareStatement("UPDATE tbLeccion SET tituloLeccion = ?, fechaLeccion = ?, contenidoLeccion = ?, statusLeccion = ? WHERE idLeccion = ?");
 
                 updateUser.setString(1, getTituloLec());
                 updateUser.setString(2, getFechaLec());
                 updateUser.setString(3, getContenidoLec());
-                updateUser.setString(4, miUUId);
-
+                updateUser.setInt(4, getStatusLec());
+                updateUser.setString(5, miUUId);
                 updateUser.executeUpdate();
-
             } catch (Exception e) {
                 System.out.println("Este es el error en el método de actualizar: " + e);
-            }
-            
+            }     
         } else {
             System.out.println("No hay ninguna fila seleccionada para actualizar.");
-        }
-
-            
+        }         
     }
-    
-    
+
      public void LimpiarDatosLec(jpAddLeccion vista) {
         // Establece los valores en los campos de texto
         vista.txtTituloLec.setText("");
         vista.txtFechaLec.setText("");
         vista.txtContenidoLec.setText("");
+        vista.txtStatusLec.setText("");
     }
     
     
