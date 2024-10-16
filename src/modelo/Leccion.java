@@ -111,22 +111,23 @@ public class Leccion {
         }
     }    
     //cargar----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-    public void cargarDatosTablaLec(jpAddLeccion panelLeccion) {
+    public void cargarDatosTablaLec(jpAddLeccion vista) {
         // Obtén la fila seleccionada 
-        int filaSeleccionada = panelLeccion.jtbLeccion.getSelectedRow();
+        int filaSeleccionada = vista.jtbLeccion.getSelectedRow();
 
         // Debemos asegurarnos que haya una fila seleccionada antes de acceder a sus valores
         if (filaSeleccionada != -1) {
-            String tituloTb = panelLeccion.jtbLeccion.getValueAt(filaSeleccionada, 0).toString();
-            String fechaTb = panelLeccion.jtbLeccion.getValueAt(filaSeleccionada, 1).toString();
-            String contenidoTb = panelLeccion.jtbLeccion.getValueAt(filaSeleccionada, 2).toString();
-            String statusTb = panelLeccion.jtbLeccion.getValueAt(filaSeleccionada, 3).toString();
+            String UUIDtb = vista.jtbLeccion.getValueAt(filaSeleccionada, 0).toString();
+            String tituloTb = vista.jtbLeccion.getValueAt(filaSeleccionada, 1).toString();
+            String fechaTb = vista.jtbLeccion.getValueAt(filaSeleccionada, 2).toString();
+            String contenidoTb = vista.jtbLeccion.getValueAt(filaSeleccionada, 3).toString();
+            String statusTb = vista.jtbLeccion.getValueAt(filaSeleccionada, 4).toString();
          
             // Establece los valores en los campos de texto
-            panelLeccion.txtTituloLec.setText(tituloTb);
-            panelLeccion.txtFechaLec.setText(fechaTb);
-            panelLeccion.txtBuscarLec.setText(contenidoTb);
-            panelLeccion.txtBuscarLec.setText(statusTb);
+            vista.txtTituloLec.setText(tituloTb);
+            vista.txtFechaLec.setText(fechaTb);
+            vista.txtBuscarLec.setText(contenidoTb);
+            vista.txtBuscarLec.setText(statusTb);
         }
     }      
     //actualizar--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

@@ -35,7 +35,7 @@ nombreUsuario VARCHAR2(15) NOT NULL,
 edadUsuario INT NOT NULL,
 correoUsuario VARCHAR2(200) NOT NULL UNIQUE,
 contrasenaUsuario VARCHAR2(100) NOT NULL,
-idRole NUMBER NOT NULL,
+idRole NUMBER,
  
 CONSTRAINT FK_Role FOREIGN KEY (idRole) REFERENCES tbROLE(idRole)
 );
@@ -76,31 +76,29 @@ END;
 select * from tbUsuario;
 drop table tbUsuario;
 delete from tbUsuario;
+    select idUsuario from tbUsuario where correoUsuario = 'pablotutor@gmail.com';
 
 --TABLA TUTORIA------------------------------------------------------------------------------------------------------------------------------------------------
 CREATE TABLE tbTutoria (
 idTutoria VARCHAR2(100) PRIMARY KEY,
 nombreTutoria VARCHAR2(50) NOT NULL,
 descripcionTutoria VARCHAR2(200) NOT NULL,
-imagenTutoria VARCHAR2(300),
 idUsuario VARCHAR2(100),
  
 CONSTRAINT FK_Usuario FOREIGN KEY (idUsuario) REFERENCES tbUsuario(idUsuario) ON DELETE CASCADE
 );
 
 -- Inserciones a la tabla tbTutoria
-INSERT INTO tbTutoria (idTutoria, nombreTutoria, descripcionTutoria, imagenTutoria, idUsuario)
-VALUES ('fB7#xY1!', 'Tutoria de Matematicas', 'En esta tutoria aprenderas sobre algebra', null, 'aB3#xY9!');
-INSERT INTO tbTutoria (idTutoria, nombreTutoria, descripcionTutoria, imagenTutoria, idUsuario)
-VALUES ('9z@Q8w$L', 'Tutoria de Fisica', 'En esta tutoria aprenderas sobre conceptos basicos de la fisica', null, '7z@Q2w$L');
-INSERT INTO tbTutoria (idTutoria, nombreTutoria, descripcionTutoria, imagenTutoria, idUsuario)
-VALUES ('d6!H2s#P', 'Tutoria de Quimica', 'En esta tutoria aprenderas sobre conceptos basicos de la quimica', null, 'mN8*5p&Z');
-INSERT INTO tbTutoria (idTutoria, nombreTutoria, descripcionTutoria, imagenTutoria, idUsuario)
-VALUES ('8R^t4U%v', 'Tutoria de Historia', 'En esta tutoria aprenderas sobre periodos de tiempo', null, '4R^t1U%v');
-INSERT INTO tbTutoria (idTutoria, nombreTutoria, descripcionTutoria, imagenTutoria, idUsuario)
-VALUES ('nN6*3p&K', 'Tutoria de Literatura', 'En esta tutoria aprenderas sobre conceptos obras literarias', null, 'j6!H3s#P');
-
-UPDATE tbTutoria SET imagenTutoria = SYS_GUID();
+INSERT INTO tbTutoria (idTutoria, nombreTutoria, descripcionTutoria, idUsuario)
+VALUES ('fB7#xY1!', 'Tutoria de Matematicas', 'En esta tutoria aprenderas sobre algebra', 'aB3#xY9!');
+INSERT INTO tbTutoria (idTutoria, nombreTutoria, descripcionTutoria, idUsuario)
+VALUES ('9z@Q8w$L', 'Tutoria de Fisica', 'En esta tutoria aprenderas sobre conceptos basicos de la fisica', '7z@Q2w$L');
+INSERT INTO tbTutoria (idTutoria, nombreTutoria, descripcionTutoria, idUsuario)
+VALUES ('d6!H2s#P', 'Tutoria de Quimica', 'En esta tutoria aprenderas sobre conceptos basicos de la quimica', 'mN8*5p&Z');
+INSERT INTO tbTutoria (idTutoria, nombreTutoria, descripcionTutoria, idUsuario)
+VALUES ('8R^t4U%v', 'Tutoria de Historia', 'En esta tutoria aprenderas sobre periodos de tiempo', '4R^t1U%v');
+INSERT INTO tbTutoria (idTutoria, nombreTutoria, descripcionTutoria, idUsuario)
+VALUES ('nN6*3p&K', 'Tutoria de Literatura', 'En esta tutoria aprenderas sobre conceptos obras literarias', 'j6!H3s#P');
 
 --Procedimiento almacenado para eliminar datos en tbTutoria
 CREATE OR REPLACE PROCEDURE eliminar_tutoria (

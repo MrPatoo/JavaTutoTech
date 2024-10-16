@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package controlador;
 
 import java.awt.event.ActionEvent;
@@ -14,10 +10,6 @@ import modelo.Usuario;
 import vista.frmRegistro;
 import vista.FrmLogin;
 
-/**
- *
- * @author Carlos H
- */
 public class CtrlRegistro implements MouseListener{
     
     //1-Llamar a las otras capas
@@ -40,7 +32,7 @@ public class CtrlRegistro implements MouseListener{
         if(e.getSource() == vista.btnRegUser){
             modelo.setCorreoUsuario(vista.getTxtClave().getText());
             modelo.setNombreUsuario(vista.getTxtNombreUser().getText());
-          modelo.setContrasenaUsuario(modelo.convertirSHA256(vista.txtClave.getText()));
+            modelo.setContrasenaUsuario(modelo.convertirSHA256(vista.txtClave.getText()));
             modelo.GuardarUsuario();
             
             //Muestro una alerta que el usuario se ha guardado

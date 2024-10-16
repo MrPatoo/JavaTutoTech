@@ -9,59 +9,44 @@ import java.security.NoSuchAlgorithmException;
 import java.sql.*;
 import java.util.UUID;
 
-/**
- *
- * @author Steven
- */
 public class Usuario {
-
     //1-Parametros
     private String idUsuario;
     private String nombreUsuario;
-    private String edadUsuario;
+    private int edadUsuario;
     private String correoUsuario;
     private String contrasenaUsuario;
-
+    
     public String getIdUsuario() {
         return idUsuario;
     }
-
     public void setIdUsuario(String idUsuario) {
         this.idUsuario = idUsuario;
     }
-
     public String getNombreUsuario() {
         return nombreUsuario;
     }
-
     public void setNombreUsuario(String nombreUsuario) {
         this.nombreUsuario = nombreUsuario;
     }
-
-    public String getEdadUsuario() {
+    public int getEdadUsuario() {
         return edadUsuario;
     }
-
-    public void setEdadUsuario(String edadUsuario) {
+    public void setEdadUsuario(int edadUsuario) {
         this.edadUsuario = edadUsuario;
     }
-
     public String getCorreoUsuario() {
         return correoUsuario;
     }
-
     public void setCorreoUsuario(String correoUsuario) {
         this.correoUsuario = correoUsuario;
     }
-
     public String getContrasenaUsuario() {
         return contrasenaUsuario;
     }
-
     public void setContrasenaUsuario(String contrasenaUsuario) {
         this.contrasenaUsuario = contrasenaUsuario;
     }
-
     public void GuardarUsuario() {
         //Creamos una variable igual a ejecutar el método de la clase de conexión
         Connection conexion = ClaseConexion.getConexion();
@@ -69,22 +54,18 @@ public class Usuario {
             //Creamos el PreparedStatement que ejecutará la Query
             PreparedStatement addUsuario = conexion.prepareStatement("INSERT INTO tbUsuario(IdUsuario, nombreUsuario, edadUsuario, correoUsuario, ContrasenaUsuario) VALUES (?, ?, ?, ?, ?)");
             String contrasenaEncriptada = convertirSHA256(getContrasenaUsuario());
-
             //Establecer valores de la consulta SQL
             addUsuario.setString(1, UUID.randomUUID().toString());
             addUsuario.setString(2, getNombreUsuario());
-            addUsuario.setString(3, getEdadUsuario());
+            addUsuario.setInt(3, getEdadUsuario());
             addUsuario.setString(4, getCorreoUsuario());
             addUsuario.setString(5, contrasenaEncriptada);
-
             //Ejecutar la consulta
             addUsuario.executeUpdate();
-
         } catch (SQLException ex) {
             System.out.println("este es el error en el modelo:metodo guardar " + ex);
         }
     }
-
     //El método devuelve un valor booleano (verdadero o falso)
     //Verdadero si existe el usuario y Falso si no existe
     public boolean iniciarSesion() {
@@ -97,9 +78,7 @@ public class Usuario {
 
             PreparedStatement statement = conexion.prepareStatement(sql);
             String contrasenaEncriptada = convertirSHA256(getContrasenaUsuario());
-
             statement.setString(1, getCorreoUsuario());
-
             statement.setString(2, contrasenaEncriptada);
             //Ejecutamos la consulta
             ResultSet resultSet = statement.executeQuery();
@@ -112,7 +91,6 @@ public class Usuario {
         }
         return resultado;
     }
-
     public boolean validarUsuario() {
         Connection con = ClaseConexion.getConexion();
         try {
@@ -133,7 +111,6 @@ public class Usuario {
             }
         }
     }
-
     public int actualizarClave() {
         Connection con = ClaseConexion.getConexion();
         try {
@@ -154,7 +131,6 @@ public class Usuario {
             }
         }
     }
-
     public String convertirSHA256(String password) {
         MessageDigest md = null;
         try {
@@ -169,8 +145,6 @@ public class Usuario {
         for (byte b : hash) {
             sb.append(String.format("%02x", b));
         }
-
         return sb.toString();
     }
-
 }
