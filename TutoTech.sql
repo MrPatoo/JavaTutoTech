@@ -128,7 +128,7 @@ idLeccion VARCHAR2(100) PRIMARY KEY,
 tituloLeccion VARCHAR2(100) NOT NULL,
 fechaLeccion VARCHAR2(100) NOT NULL,
 contenidoLeccion VARCHAR2(2000) NOT NULL,
-statusLeccion NUMBER(1) NOT NULL  CHECK (statusLeccion IN (1,2)),
+statusLeccion INT NOT NULL CHECK (statusLeccion IN (1,2)),
 idTutoria VARCHAR2(100),
 idUsuario VARCHAR2(100),
  

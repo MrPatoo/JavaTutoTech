@@ -7,12 +7,10 @@ import modelo.Leccion;
 import modelo.Tutoria;
 
 public class frmMenuPrincipal extends javax.swing.JFrame {
-    
     public frmMenuPrincipal() {
         initComponents();
         this.setLocationRelativeTo(this);  // Centra la ventana
     }
-
     public static void initfrmMenuPrincipal(){
         frmMenuPrincipal vista = new frmMenuPrincipal();
         

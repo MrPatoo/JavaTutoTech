@@ -111,20 +111,22 @@ public class Leccion {
         }
     }    
     //cargar----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-    public void cargarDatosTablaLec(jpAddLeccion vista) {
+    public void cargarDatosTablaLec(jpAddLeccion panelLeccion) {
         // Obtén la fila seleccionada 
-        int filaSeleccionada = vista.jtbLeccion.getSelectedRow();
+        int filaSeleccionada = panelLeccion.jtbLeccion.getSelectedRow();
 
         // Debemos asegurarnos que haya una fila seleccionada antes de acceder a sus valores
         if (filaSeleccionada != -1) {
-            String tituloTb = vista.jtbLeccion.getValueAt(filaSeleccionada, 0).toString();
-            String fechaTb = vista.jtbLeccion.getValueAt(filaSeleccionada, 1).toString();
-            String contenidoTb = vista.jtbLeccion.getValueAt(filaSeleccionada, 2).toString();
-           
+            String tituloTb = panelLeccion.jtbLeccion.getValueAt(filaSeleccionada, 0).toString();
+            String fechaTb = panelLeccion.jtbLeccion.getValueAt(filaSeleccionada, 1).toString();
+            String contenidoTb = panelLeccion.jtbLeccion.getValueAt(filaSeleccionada, 2).toString();
+            String statusTb = panelLeccion.jtbLeccion.getValueAt(filaSeleccionada, 3).toString();
+         
             // Establece los valores en los campos de texto
-            vista.txtTituloLec.setText(tituloTb);
-            vista.txtFechaLec.setText(fechaTb);
-            vista.txtBuscarLec.setText(contenidoTb);
+            panelLeccion.txtTituloLec.setText(tituloTb);
+            panelLeccion.txtFechaLec.setText(fechaTb);
+            panelLeccion.txtBuscarLec.setText(contenidoTb);
+            panelLeccion.txtBuscarLec.setText(statusTb);
         }
     }      
     //actualizar--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -136,22 +138,6 @@ public class Leccion {
             //Obtenemos el id de la fila seleccionada
             String miUUId = tabla.getValueAt(filaSeleccionada, 0).toString();
             try {
-                // Obtenemos los datos actuales antes de la actualización (para la auditoría)
-                PreparedStatement obtenerDatos = conexion.prepareStatement("SELECT tituloLeccion, fechaLeccion, contenidoLeccion FROM tbLeccion WHERE idLeccion = ?");
-                obtenerDatos.setString(1, miUUId);
-                ResultSet rs = obtenerDatos.executeQuery();
-
-                String tituloLecAnterior = "";
-                String fechaLecAnterior = "";
-                String contenidoLecAnterior = "";
-                int statusLecAnterior = 0;
-
-                if (rs.next()) {
-                    tituloLecAnterior = rs.getString("tituloLeccion");
-                    fechaLecAnterior = rs.getString("fechaLeccion");
-                    contenidoLecAnterior = rs.getString("fechaLeccion");
-                    statusLecAnterior = rs.getInt("statusLeccion");
-                }
                 //Ejecutamos la Query de actualización
                 PreparedStatement updateUser = conexion.prepareStatement("UPDATE tbLeccion SET tituloLeccion = ?, fechaLeccion = ?, contenidoLeccion = ?, statusLeccion = ? WHERE idLeccion = ?");
 
@@ -168,7 +154,6 @@ public class Leccion {
             System.out.println("No hay ninguna fila seleccionada para actualizar.");
         }         
     }
-
      public void LimpiarDatosLec(jpAddLeccion vista) {
         // Establece los valores en los campos de texto
         vista.txtTituloLec.setText("");

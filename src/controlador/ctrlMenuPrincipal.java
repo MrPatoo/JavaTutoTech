@@ -2,6 +2,7 @@ package controlador;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import javax.swing.JOptionPane;
 import modelo.Tutoria;
 import modelo.Leccion;
 import vista.frmMenuPrincipal;
@@ -53,15 +54,16 @@ public class ctrlMenuPrincipal implements MouseListener {
         if (e.getSource() == panelTutoria.btnAgregar) {
             modeloTutoria.setNombreTutoria(panelTutoria.txtNombre.getText());
             modeloTutoria.setDescripcionTutoria(panelTutoria.txtBuscar.getText());
-            modeloTutoria.LimpiarDatos(panelTutoria);
             modeloTutoria.GuardarTuto();
             modeloTutoria.Mostrar(panelTutoria.jtbTutoria);
             System.out.println("Tutoria agregada");
-        } else if (e.getSource() == panelTutoria.btnEliminar) {
+        } if (e.getSource() == panelTutoria.btnEliminar) {
             modeloTutoria.Eliminar(panelTutoria.jtbTutoria);
             modeloTutoria.Mostrar(panelTutoria.jtbTutoria);
             System.out.println("Tutoria eliminada");
-        } else if (e.getSource() == panelTutoria.btnActualizar) {
+        } if(e.getSource() == panelTutoria.jtbTutoria){
+            modeloTutoria.cargarDatosTabla(panelTutoria);
+        } if (e.getSource() == panelTutoria.btnActualizar) {
             modeloTutoria.setNombreTutoria(panelTutoria.txtNombre.getText());
             modeloTutoria.setDescripcionTutoria(panelTutoria.txtNombre.getText());
             modeloTutoria.Actualizar(panelTutoria.jtbTutoria);
@@ -74,23 +76,43 @@ public class ctrlMenuPrincipal implements MouseListener {
             modeloLeccion.setFechaLec(panelLeccion.txtFechaLec.getText());
             modeloLeccion.setContenidoLec(panelLeccion.txtContenidoLec.getText());
             modeloLeccion.setStatusLec(Integer.parseInt(panelLeccion.txtStatusLec.getText()));
-            modeloLeccion.LimpiarDatosLec(panelLeccion);
             modeloLeccion.GuardarLec();
             modeloLeccion.MostrarLec(panelLeccion.jtbLeccion);
-            System.out.println("Lección agregada");
-        } else if (e.getSource() == panelLeccion.btnEliminarLec) {
+            System.out.println("Funciona");
+        } if(e.getSource() == panelLeccion.jtbLeccion){
+            modeloLeccion.cargarDatosTablaLec(panelLeccion);
+        } if (e.getSource() == panelLeccion.btnEliminarLec) {
             modeloLeccion.EliminarLec(panelLeccion.jtbLeccion);
             modeloLeccion.MostrarLec(panelLeccion.jtbLeccion);
-            System.out.println("Lección eliminada");
-        } else if (e.getSource() == panelLeccion.btnActualizarLec) {
+            System.out.println("Funciona");
+        } if (e.getSource() == panelLeccion.btnActualizarLec) {
             modeloLeccion.setTituloLec(panelLeccion.txtTituloLec.getText());
             modeloLeccion.setFechaLec(panelLeccion.txtFechaLec.getText());
             modeloLeccion.setContenidoLec(panelLeccion.txtContenidoLec.getText());
-            modeloLeccion.setStatusLec(Integer.parseInt(panelLeccion.txtStatusLec.getText()));
-            modeloLeccion.ActualizarLec(panelLeccion.jtbLeccion);
-            modeloLeccion.MostrarLec(panelLeccion.jtbLeccion);
-            System.out.println("Lección actualizada");
-        }
+            // Forzar la actualización del campo de texto
+                panelLeccion.txtStatusLec.requestFocus();
+                panelLeccion.txtStatusLec.transferFocus();
+                // Imprimir el valor leído del campo para depuración
+                System.out.println("Valor leído de txtStatusLec: '" + panelLeccion.txtStatusLec.getText() + "'");
+
+                String statusText = panelLeccion.txtStatusLec.getText().trim();  // Elimina espacios en blanco
+
+                if (!statusText.isEmpty()) {
+                    try {
+                        modeloLeccion.setStatusLec(Integer.parseInt(statusText));  // Convertir a entero
+                    } catch (NumberFormatException ex) {
+                        JOptionPane.showMessageDialog(vista, "El campo de estado debe ser un número entero válido (1 o 2).", "Error de formato", JOptionPane.ERROR_MESSAGE);
+                        return;  // Salir del método para evitar la actualización con datos incorrectos
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(vista, "El campo de estado no puede estar vacío.", "Campo vacío", JOptionPane.WARNING_MESSAGE);
+                    return;  // Salir del método
+                }
+                // Realizar la actualización
+                modeloLeccion.ActualizarLec(panelLeccion.jtbLeccion);
+                modeloLeccion.MostrarLec(panelLeccion.jtbLeccion);
+                System.out.println("Lección actualizada");
+            }
     }
     // Método para mostrar el panel de Tutoria en jpContenedor
     private void mostrarPanelTutoria() {
