@@ -10,19 +10,18 @@ public class jpAddTutoria extends javax.swing.JPanel {
 
         txtDescripcion1 = new javax.swing.JTextField();
         btnEliminar = new javax.swing.JButton();
-        btnBuscar = new javax.swing.JButton();
         txtNombre = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jtbTutoria = new javax.swing.JTable();
-        jLabel4 = new javax.swing.JLabel();
         btnAgregar = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         btnActualizar = new javax.swing.JButton();
         txtBuscar = new javax.swing.JTextField();
         txtDescripcion2 = new javax.swing.JTextField();
-        btnBuscarimg1 = new javax.swing.JButton();
+        btnLimpiar = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         txtDescripcion1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
@@ -32,12 +31,12 @@ public class jpAddTutoria extends javax.swing.JPanel {
         btnEliminar.setBackground(new java.awt.Color(19, 82, 92));
         btnEliminar.setFont(new java.awt.Font("Dubai", 0, 18)); // NOI18N
         btnEliminar.setText("Eliminar");
-        add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 320, 120, 60));
-
-        btnBuscar.setBackground(new java.awt.Color(19, 82, 92));
-        btnBuscar.setFont(new java.awt.Font("Dubai", 0, 18)); // NOI18N
-        btnBuscar.setText("Buscar");
-        add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 250, 120, -1));
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
+        add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 320, 120, 60));
 
         txtNombre.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         txtNombre.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
@@ -62,14 +61,10 @@ public class jpAddTutoria extends javax.swing.JPanel {
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 410, 910, 280));
 
-        jLabel4.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jLabel4.setText("¿Desea buscar una imagen?");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, -1, -1));
-
         btnAgregar.setBackground(new java.awt.Color(19, 82, 92));
         btnAgregar.setFont(new java.awt.Font("Dubai", 0, 18)); // NOI18N
         btnAgregar.setText("Agregar");
-        add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 320, 120, 60));
+        add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 320, 120, 60));
 
         jLabel5.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jLabel5.setText("Nombre de la tutoría");
@@ -83,30 +78,37 @@ public class jpAddTutoria extends javax.swing.JPanel {
         btnActualizar.setBackground(new java.awt.Color(19, 82, 92));
         btnActualizar.setFont(new java.awt.Font("Dubai", 0, 18)); // NOI18N
         btnActualizar.setText("Actualizar");
-        add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 320, 120, 60));
+        add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 320, 120, 60));
 
         txtBuscar.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         txtBuscar.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        add(txtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 250, 350, 40));
+        add(txtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 250, 350, 40));
 
         txtDescripcion2.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         txtDescripcion2.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         add(txtDescripcion2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 170, 590, 40));
 
-        btnBuscarimg1.setBackground(new java.awt.Color(19, 82, 92));
-        btnBuscarimg1.setFont(new java.awt.Font("Dubai", 0, 18)); // NOI18N
-        btnBuscarimg1.setText("Buscar \nimagen");
-        add(btnBuscarimg1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 260, 150, 30));
+        btnLimpiar.setBackground(new java.awt.Color(19, 82, 92));
+        btnLimpiar.setFont(new java.awt.Font("Dubai", 0, 18)); // NOI18N
+        btnLimpiar.setText("Limpiar");
+        add(btnLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 320, 120, 60));
+
+        jLabel2.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jLabel2.setText("Busca una tutoría");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 260, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEliminarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnActualizar;
     public javax.swing.JButton btnAgregar;
-    public javax.swing.JButton btnBuscar;
-    public javax.swing.JButton btnBuscarimg1;
     public javax.swing.JButton btnEliminar;
+    public javax.swing.JButton btnLimpiar;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;

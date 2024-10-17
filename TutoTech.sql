@@ -76,8 +76,6 @@ END;
 select * from tbUsuario;
 drop table tbUsuario;
 delete from tbUsuario;
-    select idUsuario from tbUsuario where correoUsuario = 'pablotutor@gmail.com';
-
 --TABLA TUTORIA------------------------------------------------------------------------------------------------------------------------------------------------
 CREATE TABLE tbTutoria (
 idTutoria VARCHAR2(100) PRIMARY KEY,
