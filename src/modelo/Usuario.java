@@ -53,13 +53,12 @@ public class Usuario {
         try {
             //Creamos el PreparedStatement que ejecutará la Query
             PreparedStatement addUsuario = conexion.prepareStatement("INSERT INTO tbUsuario(IdUsuario, nombreUsuario, edadUsuario, correoUsuario, ContrasenaUsuario) VALUES (?, ?, ?, ?, ?)");
-            String contrasenaEncriptada = convertirSHA256(getContrasenaUsuario());
             //Establecer valores de la consulta SQL
             addUsuario.setString(1, UUID.randomUUID().toString());
             addUsuario.setString(2, getNombreUsuario());
             addUsuario.setInt(3, getEdadUsuario());
             addUsuario.setString(4, getCorreoUsuario());
-            addUsuario.setString(5, contrasenaEncriptada);
+            addUsuario.setString(5, getContrasenaUsuario());
             //Ejecutar la consulta
             addUsuario.executeUpdate();
         } catch (SQLException ex) {
@@ -77,9 +76,8 @@ public class Usuario {
             String sql = "SELECT * FROM tbUsuario WHERE correoUsuario = ? AND contrasenaUsuario = ?";
 
             PreparedStatement statement = conexion.prepareStatement(sql);
-            String contrasenaEncriptada = convertirSHA256(getContrasenaUsuario());
             statement.setString(1, getCorreoUsuario());
-            statement.setString(2, contrasenaEncriptada);
+            statement.setString(2, getContrasenaUsuario());
             //Ejecutamos la consulta
             ResultSet resultSet = statement.executeQuery();
             //Si hay un resultado, significa que el usuario existe y la contraseña es correcta

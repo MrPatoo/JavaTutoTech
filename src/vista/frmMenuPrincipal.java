@@ -22,8 +22,7 @@ public class frmMenuPrincipal extends javax.swing.JFrame {
         Leccion modeloLeccion = new Leccion();
         
         // Controlador
-        ctrlMenuPrincipal controlador = new ctrlMenuPrincipal(vista, panelTutoria, modeloTutoria, panelLeccion, modeloLeccion);
-        
+        ctrlMenuPrincipal controlador = new ctrlMenuPrincipal(vista, panelTutoria, modeloTutoria, panelLeccion, modeloLeccion);     
         vista.setVisible(true);
     }
 @SuppressWarnings("unchecked")

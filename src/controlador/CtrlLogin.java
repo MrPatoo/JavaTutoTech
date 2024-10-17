@@ -10,10 +10,8 @@ import vista.frmRegistro;
 import vista.recuperacionClave;
 
 public class CtrlLogin implements MouseListener {
-
     Usuario modelo;
     FrmLogin vista;
-
     //2-Constructor 
     public CtrlLogin(Usuario Modelo, FrmLogin Vista) {
         this.modelo = Modelo;
@@ -27,14 +25,14 @@ public class CtrlLogin implements MouseListener {
     public void mouseClicked(MouseEvent e) {
         if (e.getSource() == vista.jBtnInicia) {
 
-            modelo.setCorreoUsuario(vista.getjTxtMail().getText());
+            modelo.setCorreoUsuario(vista.jTxtMail.getText());
             modelo.setContrasenaUsuario(modelo.convertirSHA256(vista.jTxtPass.getText()));
             //Creo una variable llamada "comprobar" 
             //que guardará el resultado de ejecutar el metodo iniciarSesion()            
             boolean comprobar = modelo.iniciarSesion();
             //Si la variable es "true" significa que si existe el usuario ingresado    
             if (comprobar == true) {
-                JOptionPane.showMessageDialog(vista, "Usuario existe, ¡Bienvenido!");
+                JOptionPane.showMessageDialog(vista, "¡Bienvenido!");
                 frmMenuPrincipal.initfrmMenuPrincipal();
             } else {
                 JOptionPane.showMessageDialog(vista, "Usuario no encontrado");

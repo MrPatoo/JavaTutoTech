@@ -30,23 +30,20 @@ public class CtrlRegistro implements MouseListener{
     public void mouseClicked(MouseEvent e) {
         
         if(e.getSource() == vista.btnRegUser){
-            modelo.setCorreoUsuario(vista.getTxtClave().getText());
+            modelo.setCorreoUsuario(vista.getTxtMail().getText());
             modelo.setNombreUsuario(vista.getTxtNombreUser().getText());
+            modelo.setEdadUsuario(Integer.parseInt(vista.getTxtEdadU().getText()));
             modelo.setContrasenaUsuario(modelo.convertirSHA256(vista.txtClave.getText()));
             modelo.GuardarUsuario();
             
             //Muestro una alerta que el usuario se ha guardado
             JOptionPane.showMessageDialog(vista, "Usuario Guardado");
-        }
-        
+        }     
          //Clic al botón de Ir Al Login
         if(e.getSource() == vista.lblSesion){
             FrmLogin.initFrmLogin();
             vista.dispose();
-        }
-        
-        
-        
+        } 
     }
 
     @Override
