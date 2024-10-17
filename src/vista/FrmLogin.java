@@ -33,7 +33,7 @@ public class FrmLogin extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(37, 78, 97));
+        jPanel1.setBackground(new java.awt.Color(0, 153, 204));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/img/Imagen1.png"))); // NOI18N
         jLabel1.setText("jLabel1");
@@ -45,6 +45,7 @@ public class FrmLogin extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Clave:");
 
+        jBtnInicia.setBackground(new java.awt.Color(76, 130, 252));
         jBtnInicia.setText("Ingresar");
 
         jTxtMail.addActionListener(new java.awt.event.ActionListener() {

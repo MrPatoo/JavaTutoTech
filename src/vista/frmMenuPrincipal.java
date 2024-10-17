@@ -38,15 +38,15 @@ public class frmMenuPrincipal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
 
-        jPanel1.setBackground(new java.awt.Color(37, 78, 97));
+        jPanel1.setBackground(new java.awt.Color(0, 153, 204));
 
-        btnIrTutoria.setBackground(new java.awt.Color(0, 153, 204));
+        btnIrTutoria.setBackground(new java.awt.Color(76, 130, 252));
         btnIrTutoria.setText("Agregar Tutoría");
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/img/Imagen1.png"))); // NOI18N
         jLabel1.setText("jLabel1");
 
-        btnIrLeccion.setBackground(new java.awt.Color(0, 153, 204));
+        btnIrLeccion.setBackground(new java.awt.Color(76, 130, 252));
         btnIrLeccion.setText("Agregar Leccion");
         btnIrLeccion.setMaximumSize(new java.awt.Dimension(116, 26));
         btnIrLeccion.setMinimumSize(new java.awt.Dimension(116, 26));

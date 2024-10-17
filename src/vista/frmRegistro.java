@@ -101,7 +101,7 @@ public class frmRegistro extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel12.setBackground(new java.awt.Color(37, 78, 97));
+        jPanel12.setBackground(new java.awt.Color(0, 153, 204));
 
         jLabel44.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/img/Imagen1.png"))); // NOI18N
         jLabel44.setText("jLabel1");
@@ -113,6 +113,7 @@ public class frmRegistro extends javax.swing.JFrame {
         jLabel46.setForeground(new java.awt.Color(255, 255, 255));
         jLabel46.setText("Clave:");
 
+        btnRegUser.setBackground(new java.awt.Color(76, 130, 252));
         btnRegUser.setText("Registrar");
 
         txtMail.addActionListener(new java.awt.event.ActionListener() {

@@ -38,11 +38,11 @@ public jpAddLeccion() {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnActualizarLec.setBackground(new java.awt.Color(19, 82, 92));
+        btnActualizarLec.setBackground(new java.awt.Color(76, 130, 252));
         btnActualizarLec.setFont(new java.awt.Font("Dubai", 0, 18)); // NOI18N
         btnActualizarLec.setText("Actualizar");
 
-        btnEliminarLec.setBackground(new java.awt.Color(19, 82, 92));
+        btnEliminarLec.setBackground(new java.awt.Color(76, 130, 252));
         btnEliminarLec.setFont(new java.awt.Font("Dubai", 0, 18)); // NOI18N
         btnEliminarLec.setText("Eliminar");
 
@@ -77,13 +77,13 @@ public jpAddLeccion() {
         ));
         jScrollPane1.setViewportView(jtbLeccion);
 
-        btnLimpiarLec.setBackground(new java.awt.Color(19, 82, 92));
+        btnLimpiarLec.setBackground(new java.awt.Color(76, 130, 252));
         btnLimpiarLec.setFont(new java.awt.Font("Dubai", 0, 18)); // NOI18N
         btnLimpiarLec.setText("Limpiar");
 
         txtContenidoLec.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
 
-        btnAgregarLec.setBackground(new java.awt.Color(19, 82, 92));
+        btnAgregarLec.setBackground(new java.awt.Color(76, 130, 252));
         btnAgregarLec.setFont(new java.awt.Font("Dubai", 0, 18)); // NOI18N
         btnAgregarLec.setText("Agregar");
 

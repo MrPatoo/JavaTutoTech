@@ -28,7 +28,7 @@ public class jpAddTutoria extends javax.swing.JPanel {
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        btnEliminar.setBackground(new java.awt.Color(19, 82, 92));
+        btnEliminar.setBackground(new java.awt.Color(76, 130, 252));
         btnEliminar.setFont(new java.awt.Font("Dubai", 0, 18)); // NOI18N
         btnEliminar.setText("Eliminar");
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
@@ -61,7 +61,7 @@ public class jpAddTutoria extends javax.swing.JPanel {
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 410, 910, 280));
 
-        btnAgregar.setBackground(new java.awt.Color(19, 82, 92));
+        btnAgregar.setBackground(new java.awt.Color(76, 130, 252));
         btnAgregar.setFont(new java.awt.Font("Dubai", 0, 18)); // NOI18N
         btnAgregar.setText("Agregar");
         add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 320, 120, 60));
@@ -75,7 +75,7 @@ public class jpAddTutoria extends javax.swing.JPanel {
         jLabel1.setText("Añadir una tutoría nueva");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 20, -1, -1));
 
-        btnActualizar.setBackground(new java.awt.Color(19, 82, 92));
+        btnActualizar.setBackground(new java.awt.Color(76, 130, 252));
         btnActualizar.setFont(new java.awt.Font("Dubai", 0, 18)); // NOI18N
         btnActualizar.setText("Actualizar");
         add(btnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 320, 120, 60));
@@ -88,7 +88,7 @@ public class jpAddTutoria extends javax.swing.JPanel {
         txtDescripcion2.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         add(txtDescripcion2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 170, 590, 40));
 
-        btnLimpiar.setBackground(new java.awt.Color(19, 82, 92));
+        btnLimpiar.setBackground(new java.awt.Color(76, 130, 252));
         btnLimpiar.setFont(new java.awt.Font("Dubai", 0, 18)); // NOI18N
         btnLimpiar.setText("Limpiar");
         add(btnLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 320, 120, 60));

@@ -51,7 +51,7 @@ public class frmCambioContrasenia extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(37, 78, 97));
 
-        jPanel1.setBackground(new java.awt.Color(37, 78, 97));
+        jPanel1.setBackground(new java.awt.Color(0, 153, 204));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/img/Imagen1.png"))); // NOI18N
         jLabel2.setText("jLabel1");
@@ -82,6 +82,8 @@ public class frmCambioContrasenia extends javax.swing.JFrame {
                 jTxtClave1ActionPerformed(evt);
             }
         });
+
+        jBtnEnviar.setBackground(new java.awt.Color(76, 130, 252));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
