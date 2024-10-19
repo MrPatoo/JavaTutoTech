@@ -41,7 +41,6 @@ public class frmRegistro extends javax.swing.JFrame {
         jLabel19 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
         jPanel12 = new javax.swing.JPanel();
-        jLabel44 = new javax.swing.JLabel();
         jLabel45 = new javax.swing.JLabel();
         jLabel46 = new javax.swing.JLabel();
         btnRegUser = new javax.swing.JButton();
@@ -52,6 +51,10 @@ public class frmRegistro extends javax.swing.JFrame {
         lblSesion = new javax.swing.JLabel();
         txtNombreUser = new javax.swing.JTextField();
         txtEdadU = new javax.swing.JTextField();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         jLabel21.setBackground(new java.awt.Color(255, 255, 255));
         jLabel21.setForeground(new java.awt.Color(255, 255, 255));
@@ -101,21 +104,32 @@ public class frmRegistro extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel12.setBackground(new java.awt.Color(0, 153, 204));
+        jPanel12.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel12.setPreferredSize(new java.awt.Dimension(1252, 841));
 
-        jLabel44.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/img/Imagen1.png"))); // NOI18N
-        jLabel44.setText("jLabel1");
-
-        jLabel45.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel45.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
+        jLabel45.setForeground(new java.awt.Color(47, 88, 212));
         jLabel45.setText("Correo Electronico:");
 
         jLabel46.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel46.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel46.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
+        jLabel46.setForeground(new java.awt.Color(47, 88, 212));
         jLabel46.setText("Clave:");
 
         btnRegUser.setBackground(new java.awt.Color(76, 130, 252));
+        btnRegUser.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
+        btnRegUser.setForeground(new java.awt.Color(255, 255, 255));
         btnRegUser.setText("Registrar");
+        btnRegUser.setPreferredSize(new java.awt.Dimension(73, 23));
+        btnRegUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegUserActionPerformed(evt);
+            }
+        });
 
+        txtClave.setBackground(new java.awt.Color(235, 235, 250));
+
+        txtMail.setBackground(new java.awt.Color(235, 235, 250));
         txtMail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtMailActionPerformed(evt);
@@ -123,95 +137,120 @@ public class frmRegistro extends javax.swing.JFrame {
         });
 
         jLabel47.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel47.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel47.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
+        jLabel47.setForeground(new java.awt.Color(47, 88, 212));
         jLabel47.setText("Edad:");
 
         jLabel48.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel48.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel48.setFont(new java.awt.Font("Roboto Medium", 0, 12)); // NOI18N
+        jLabel48.setForeground(new java.awt.Color(47, 88, 212));
         jLabel48.setText("Nombre de usuario:");
 
-        lblSesion.setForeground(new java.awt.Color(102, 255, 102));
+        lblSesion.setForeground(new java.awt.Color(47, 88, 212));
         lblSesion.setText("¿YA TIENES CUENTA? inicia sesion aqui");
 
+        txtNombreUser.setBackground(new java.awt.Color(235, 235, 250));
         txtNombreUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNombreUserActionPerformed(evt);
             }
         });
 
+        txtEdadU.setBackground(new java.awt.Color(235, 235, 250));
         txtEdadU.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtEdadUActionPerformed(evt);
             }
         });
 
+        jPanel1.setLayout(new javax.swing.OverlayLayout(jPanel1));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\Steven\\JavaProjects\\JavaTutoTech\\src\\vista\\img\\login.png")); // NOI18N
+        jLabel1.setPreferredSize(new java.awt.Dimension(655, 850));
+        jPanel1.add(jLabel1);
+
+        jLabel2.setFont(new java.awt.Font("Nirmala UI", 1, 36)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(47, 88, 212));
+        jLabel2.setText("REGISTRATE");
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/img/Group 1.jpg"))); // NOI18N
+
         javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
         jPanel12.setLayout(jPanel12Layout);
         jPanel12Layout.setHorizontalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel12Layout.createSequentialGroup()
-                .addGap(88, 88, 88)
                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtEdadU, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel48)
-                    .addComponent(jLabel46)
                     .addGroup(jPanel12Layout.createSequentialGroup()
-                        .addComponent(btnRegUser)
-                        .addGap(18, 18, 18)
-                        .addComponent(lblSesion))
-                    .addComponent(jLabel45)
-                    .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(txtClave, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(txtMail, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel47, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(txtNombreUser, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 473, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(58, Short.MAX_VALUE)
+                        .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtNombreUser, javax.swing.GroupLayout.PREFERRED_SIZE, 473, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtMail, javax.swing.GroupLayout.PREFERRED_SIZE, 473, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtEdadU, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtClave, javax.swing.GroupLayout.PREFERRED_SIZE, 473, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnRegUser, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel46)
+                            .addComponent(jLabel47)
+                            .addComponent(jLabel48)
+                            .addComponent(jLabel45)
+                            .addComponent(jLabel3))
+                        .addGap(51, 51, 51))
                     .addGroup(jPanel12Layout.createSequentialGroup()
-                        .addGap(115, 115, 115)
-                        .addComponent(jLabel44, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(71, Short.MAX_VALUE))
+                        .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel12Layout.createSequentialGroup()
+                                .addGap(190, 190, 190)
+                                .addComponent(jLabel2))
+                            .addGroup(jPanel12Layout.createSequentialGroup()
+                                .addGap(188, 188, 188)
+                                .addComponent(lblSesion)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanel12Layout.setVerticalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel12Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(jLabel44, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(61, 61, 61)
+                .addComponent(jLabel2)
+                .addGap(10, 10, 10)
                 .addComponent(jLabel45)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtMail, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel48)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtNombreUser, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel47)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtEdadU, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtEdadU, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel46)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtClave, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnRegUser)
-                    .addComponent(lblSesion))
-                .addGap(21, 21, 21))
+                .addComponent(btnRegUser, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(23, 23, 23)
+                .addComponent(lblSesion)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel3)
+                .addGap(63, 63, 63))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, 1239, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 6, Short.MAX_VALUE))
+                .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, 846, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -233,17 +272,21 @@ public class frmRegistro extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtedadActionPerformed
 
-    private void txtMailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMailActionPerformed
+    private void txtEdadUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEdadUActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtMailActionPerformed
+    }//GEN-LAST:event_txtEdadUActionPerformed
 
     private void txtNombreUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreUserActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNombreUserActionPerformed
 
-    private void txtEdadUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEdadUActionPerformed
+    private void txtMailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMailActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtEdadUActionPerformed
+    }//GEN-LAST:event_txtMailActionPerformed
+
+    private void btnRegUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegUserActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnRegUserActionPerformed
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -278,16 +321,19 @@ public class frmRegistro extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnRegUser;
     public javax.swing.JButton btnRegistrar;
+    public javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel44;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel45;
     private javax.swing.JLabel jLabel46;
     private javax.swing.JLabel jLabel47;
     private javax.swing.JLabel jLabel48;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel12;
     public javax.swing.JLabel lbIrasesion;
     public javax.swing.JLabel lblSesion;

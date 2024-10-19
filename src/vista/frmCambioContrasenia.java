@@ -51,32 +51,40 @@ public class frmCambioContrasenia extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(37, 78, 97));
 
-        jPanel1.setBackground(new java.awt.Color(0, 153, 204));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/img/Imagen1.png"))); // NOI18N
         jLabel2.setText("jLabel1");
 
-        jLblCode.setForeground(new java.awt.Color(255, 255, 255));
-        jLblCode.setText("Digite el codigo enviado a su correo.");
+        jLblCode.setBackground(new java.awt.Color(47, 88, 212));
+        jLblCode.setFont(new java.awt.Font("Nirmala UI", 1, 18)); // NOI18N
+        jLblCode.setForeground(new java.awt.Color(47, 88, 212));
+        jLblCode.setText("INGRESA EL CODIGO ENVIADO");
 
+        jTxtClave2.setBackground(new java.awt.Color(235, 235, 250));
         jTxtClave2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTxtClave2ActionPerformed(evt);
             }
         });
 
+        jTxtCode.setBackground(new java.awt.Color(235, 235, 250));
         jTxtCode.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTxtCodeActionPerformed(evt);
             }
         });
 
-        jLblClave1.setForeground(new java.awt.Color(255, 255, 255));
+        jLblClave1.setFont(new java.awt.Font("Roboto Light", 0, 12)); // NOI18N
+        jLblClave1.setForeground(new java.awt.Color(47, 88, 212));
         jLblClave1.setText("Nueva Clave");
 
-        jLblClave2.setForeground(new java.awt.Color(255, 255, 255));
+        jLblClave2.setBackground(new java.awt.Color(47, 88, 212));
+        jLblClave2.setFont(new java.awt.Font("Roboto Light", 0, 12)); // NOI18N
+        jLblClave2.setForeground(new java.awt.Color(47, 88, 212));
         jLblClave2.setText("Repetir clave");
 
+        jTxtClave1.setBackground(new java.awt.Color(235, 235, 250));
         jTxtClave1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTxtClave1ActionPerformed(evt);
@@ -92,8 +100,8 @@ public class frmCambioContrasenia extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(234, 234, 234)
-                        .addComponent(jLblCode))
+                        .addGap(291, 291, 291)
+                        .addComponent(jBtnEnviar))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(43, 43, 43)
                         .addComponent(jLblClave1)
@@ -102,28 +110,30 @@ public class frmCambioContrasenia extends javax.swing.JFrame {
                         .addGap(12, 12, 12)
                         .addComponent(jLblClave2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTxtClave2, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(291, 291, 291)
-                        .addComponent(jBtnEnviar))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(194, 194, 194)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(87, Short.MAX_VALUE))
+                        .addComponent(jTxtClave2, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jTxtCode, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(139, 139, 139))
+                .addContainerGap(38, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLblCode, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jTxtCode, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(48, 48, 48)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(17, 17, 17))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jLabel2)
-                .addGap(18, 18, 18)
-                .addComponent(jLblCode)
-                .addGap(18, 18, 18)
-                .addComponent(jTxtCode, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(8, 8, 8)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(jTxtCode, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(16, 16, 16)
+                        .addComponent(jLblCode)))
+                .addGap(99, 99, 99)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLblClave1)
                     .addComponent(jTxtClave2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -131,7 +141,7 @@ public class frmCambioContrasenia extends javax.swing.JFrame {
                     .addComponent(jTxtClave1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jBtnEnviar)
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(8, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
